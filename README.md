@@ -1,6 +1,6 @@
-# GymVietAI - AI-Driven Assistance Fitness Platform (Exercise Plan Prediction Feature)
+# GymVietAI - AI-Driven Assistance Fitness Platform (Exercise Plan Prediction Feature/Nutrition Recommendations Feature)
 
-This repository contains the code for the AI microservice responsible for predicting personalized workout plans, nutrition recommendation within the GymVietAI application.  It uses a machine learning model to recommend workout plans based on user inputs (gender, weight, height, and age).
+This repository contains the code for the AI microservice responsible for predicting personalized workout plans, and nutrition recommendations within the GymVietAI application.  It uses a machine learning model to recommend workout plans based on user inputs (gender, weight, height, and age).
 
 ## Features
 
