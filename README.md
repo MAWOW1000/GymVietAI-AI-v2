@@ -42,7 +42,7 @@ This repository contains the code for the AI microservice responsible for predic
 ## Installation and Setup
 1. Clone the Repository:
 ```
-git clone https://github.com/MAWOW1000/GymVietAI-AI.git
+git clone https://github.com/mintwann/GymVietAI-AI
 ```
 
 2. Create and Activate a Virtual Environment:
