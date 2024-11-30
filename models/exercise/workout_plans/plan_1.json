@@ -1,0 +1,73 @@
+{
+  "bmi_level": 1,
+  "workout_plan": {
+    "training_split": "Full Body",
+    "goal": "Build foundation, gain muscle",
+    "training_level": "Beginner",
+    "days": [
+      {
+        "day": "Day 1",
+        "exercises": [
+          {"exercise_name": "Bodyweight Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Proper form, deep as comfortable"},
+          {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Hands elevated, modify if needed"},
+          {"exercise_name": "Bodyweight Assisted Pull Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use assistance, decrease over time"},
+          {"exercise_name": "Hand Plank", "sets": 2, "reps": "20-30s hold", "rest": 60, "notes": "Straight line head to heels"},
+          {"exercise_name": "Bird Dog", "sets": 2, "reps": "10-12 per side", "rest": 60, "notes": "Engage core, balance"},
+          {"exercise_name": "Glute Bridge", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Squeeze glutes"}
+        ]
+      },
+      {
+        "day": "Day 2",
+        "exercises": [
+          {"notes": "Rest or Light Activity"}
+        ]
+      },
+      {
+        "day": "Day 3",
+        "exercises": [
+          {"exercise_name": "Bodyweight Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Controlled movements."},
+          {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": ""},
+          {"exercise_name": "Inverted Row", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Sturdy table or TRX, lower slowly"},
+          {"exercise_name": "Elbow Side Plank", "sets": 2, "reps": "20-30s hold per side", "rest": 60, "notes": "Straight line"},
+          {"exercise_name": "Supermans", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Glutes and lower back"},
+          {"exercise_name": "Laying Leg Raises", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Lower back on ground"}
+        ]
+      },
+      {
+        "day": "Day 4",
+        "exercises": [
+          {"notes": "Rest or Light Activity"}
+        ]
+      },
+      {
+        "day": "Day 5",
+        "exercises": [
+          {"exercise_name": "Bodyweight Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Proper form, deep as comfortable"},
+          {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Hands elevated, modify if needed"},
+          {"exercise_name": "Bodyweight Assisted Pull Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use assistance, decrease over time"},
+          {"exercise_name": "Hand Plank", "sets": 2, "reps": "20-30s hold", "rest": 60, "notes": "Straight line head to heels"},
+          {"exercise_name": "Bird Dog", "sets": 2, "reps": "10-12 per side", "rest": 60, "notes": "Engage core, balance"},
+          {"exercise_name": "Glute Bridge", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Squeeze glutes"}
+        ]
+      },
+      {
+        "day": "Day 6",
+        "exercises": [
+          {"notes": "Rest"}
+        ]
+      },
+      {
+        "day": "Day 7",
+        "exercises": [
+          {"notes": "Rest"}
+        ]
+      }
+    ],
+    "important_considerations": [
+      "Nutrition crucial, consult dietitian",
+      "Medical guidance recommended",
+      "Gradual progression",
+      "Rest and recovery"
+    ]
+  }
+}

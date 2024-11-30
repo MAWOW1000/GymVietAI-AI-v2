@@ -1,0 +1,87 @@
+{
+    "bmi_level": 7,
+    "workout_plan": {
+      "training_split": "Full Body",
+      "goal": "Improve mobility, increase activity, enhance cardio",
+      "training_level": "Beginner",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Cardio Quick Feet", "sets": 2, "reps": "10-15", "rest": "60-90", "notes": "Seated Marches (in chair, light effort, mimicking marching motion); Using Quick Feet as a rhythmic seated movement"},
+            {"exercise_name": "Push Up", "sets": 2, "reps": "AMRAP", "rest": "60-90", "notes": "Wall Push-Ups (or Incline Push-Ups if easier)"}, 
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "5-8", "rest": "60-90", "notes": "Chair Stands (use arms for assistance)"},
+            {"exercise_name": "Backward Arm Circle", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Overhead Arm Raises (seated or standing, light/no weight)"}, 
+            {"exercise_name": "Dumbbell Seated Calf Raise", "sets": 1, "reps": "10-12", "rest": 60, "notes": "Seated Bicep Curls (light weights or resistance band)"},
+            {"exercise_name": "Dumbbell Overhead Tricep Extension", "sets": 1, "reps": "10-12", "rest": 60, "notes": "Overhead Tricep Extensions (light weight or resistance band, focus on triceps)"}
+          ],
+          "cardio": [
+            {"type": "Water Aerobics", "duration": "20-30 minutes", "notes": "Highly recommended"},
+            {"type": "Cardio", "exercise_name": "Treadmill Walk", "duration": "10-15 min (if no Water Aerobics)"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"exercise_name": "Seated Forward Bend", "sets": 2, "reps": "30-60s hold", "rest": 60, "notes": "Seated Forward Bend (modify by bending knees)"}, 
+            {"exercise_name": "Seated Ulnar Nerve Slider", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Seated Ulnar Nerve Slider (Adapt this arm movement along the wall as a seated wall slide)"},
+            {"exercise_name": "Bird Dog", "sets": 2, "reps": "5-8 per side", "rest": 60, "notes": "Bird Dog (modify on knees)"},
+            {"exercise_name": "Dumbbell Standing Hip Abduction", "sets": 2, "reps": "10-12 per side", "rest": 60, "notes": "Standing Hip Abduction (use chair for balance)"},  
+            {"exercise_name": "Treadmill Walk", "duration": "10-15 minutes", "notes": "Walking (gentle pace, flat surface, intervals if needed)"}
+        ],
+        "cardio": [
+          {"type": "Water Aerobics", "duration": "20-30 minutes", "notes": "Highly recommended, low impact"},
+          {"type": "Cardio", "exercise_name": "Stationary Bike", "duration": "10-15 min (if no Water Aerobics)", "notes": "Light Resistance"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Cardio Quick Feet", "sets": 2, "reps": "10-15", "rest": "60-90", "notes": "Seated Marches (in chair, light effort, mimicking marching motion); Using Quick Feet as a rhythmic seated movement"},
+            {"exercise_name": "Push Up", "sets": 2, "reps": "AMRAP", "rest": "60-90", "notes": "Wall Push-Ups (or Incline Push-Ups if easier)"}, 
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "5-8", "rest": "60-90", "notes": "Chair Stands (use arms for assistance)"},
+            {"exercise_name": "Backward Arm Circle", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Overhead Arm Raises (seated or standing, light/no weight)"}, 
+            {"exercise_name": "Dumbbell Seated Calf Raise", "sets": 1, "reps": "10-12", "rest": 60, "notes": "Seated Bicep Curls (light weights or resistance band)"},
+            {"exercise_name": "Dumbbell Overhead Tricep Extension", "sets": 1, "reps": "10-12", "rest": 60, "notes": "Overhead Tricep Extensions (light weight or resistance band, focus on triceps)"}
+          ],
+          "cardio": [
+            {"type": "Water Aerobics", "duration": "20-30 minutes", "notes": "Highly recommended"},
+            {"type": "Cardio", "exercise_name": "Treadmill Walk", "duration": "10-15 min (if no Water Aerobics)"}
+          ]
+  
+  
+        },
+        {
+          "day": "Day 6",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Medical supervision highly recommended",
+        "Start slowly, prioritize comfort",
+        "Gradual progression",
+        "Healthy diet",
+        "Listen to your body"
+      ]
+    }
+  }

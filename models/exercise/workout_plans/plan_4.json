@@ -1,0 +1,78 @@
+{
+    "bmi_level": 4,
+    "workout_plan": {
+      "training_split": "Upper/Lower",
+      "goal": "Balanced fitness (strength, hypertrophy, endurance)",
+      "training_level": "Beginner/Intermediate",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Barbell Reverse Grip Bench Press", "sets": 3, "reps": "8-12", "rest": "60-90", "notes": "Controlled movements, full ROM"},
+            {"exercise_name": "Dumbbell Row Bilateral", "sets": 3, "reps": "8-12", "rest": "60-90", "notes": "Stable core"},
+            {"exercise_name": "Dumbbell Overhead Press", "sets": 3, "reps": "8-12", "rest": "60-90", "notes": "Control weight"},
+            {"exercise_name": "Chin Ups", "sets": 3, "reps": "AMRAP", "rest": "60-90", "notes": "Or Lat Pulldowns (918)"},
+            {"exercise_name": "Dumbbell Curl", "sets": 3, "reps": "10-15", "rest": 60, "notes": "Control weight"},
+            {"exercise_name": "Cable Rope Pushdown", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Elbows close to body"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [
+            {"exercise_name": "Barbell Squat", "sets": 3, "reps": "8-12", "rest": "90-120", "notes": "Proper form, deep as comfortable"},
+            {"exercise_name": "Dumbbell Romanian Deadlift", "sets": 3, "reps": "10-15", "rest": "90-120", "notes": "Hinge at hips, straight back"},
+            {"exercise_name": "Machine Leg Press", "sets": 3, "reps": "10-15", "rest": 90, "notes": "Control weight"},
+            {"exercise_name": "Machine Leg Extension", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Control movement"},
+            {"exercise_name": "Machine Seated Leg Curl", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Squeeze hamstrings"},
+            {"exercise_name": "Dumbbell Calf Raise", "sets": 3, "reps": "15-20", "rest": 60, "notes": "Full ROM"}
+          ]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"notes": "Rest or Active Recovery (light cardio, stretching, yoga)"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [
+            {"exercise_name": "Dumbbell Bench Press", "sets": 3, "reps": "12-15", "rest": "60-75", "notes": "Lighter than Day 1"},
+            {"exercise_name": "Dumbbell Row Bilateral", "sets": 3, "reps": "12-15", "rest": "60-75", "notes": "Lighter than Day 1"},
+            {"exercise_name": "Dumbbell Arnold Press", "sets": 3, "reps": "10-15", "rest": "60-75", "notes": "Controlled movements"},
+            {"exercise_name": "Cable Rope Face Pulls", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Light weight, rear deltoids"},
+            {"exercise_name": "Dumbbell Curl", "sets": 2, "reps": "15-20", "rest": 45, "notes": "Lighter than Day 1"},
+            {"exercise_name": "Dumbbell Overhead Tricep Extension", "sets": 2, "reps": "15-20", "rest": 45, "notes": "Lighter than Day 1"}
+          ]
+        },
+         {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Walking Lunge", "sets": 3, "reps": "10-12 per leg", "rest": "60-75", "notes": "Balance and control"},
+            {"exercise_name": "Glute Bridge", "sets": 3, "reps": "15-20", "rest": "60-75", "notes": "Squeeze glutes"},
+            {"exercise_name": "Machine Seated Leg Curl", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Squeeze hamstrings"},
+            {"exercise_name": "Machine Leg Extension", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Controlled movements"},
+            {"exercise_name": "Calf Raises", "sets": 3, "reps": "20-25", "rest": 45, "notes": "Full ROM"}
+  
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        }
+      ],
+      "important_considerations": [
+      "Balanced diet",
+      "Progressive overload",
+      "Proper form",
+      "Adequate rest"
+      ]
+    }
+  }

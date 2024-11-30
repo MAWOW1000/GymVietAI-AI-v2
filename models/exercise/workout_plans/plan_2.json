@@ -1,0 +1,73 @@
+{
+    "bmi_level": 2,
+    "workout_plan": {
+      "training_split": "Full Body",
+      "goal": "Build strength & muscle, increase fitness",
+      "training_level": "Beginner",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Dumbbell Goblet Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Use appropriate weight"},
+            {"exercise_name": "Dumbbell Bench Press", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Chest activation"},
+            {"exercise_name": "Dumbbell Row Unilateral", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": "Stable core, avoid twisting"},
+            {"exercise_name": "Bodyweight Assisted Pull Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use assistance as needed"},
+            {"exercise_name": "Hand Plank", "sets": 2, "reps": "30-45s hold", "rest": 60, "notes": "Straight line, core engaged"},
+            {"exercise_name": "Glute Bridge", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Squeeze glutes"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [
+            {"notes": "Rest or Light Activity (yoga, walking, stretching)"}
+          ]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"exercise_name": "Dumbbell Romanian Deadlift", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Hinge at hips, straight back"},
+            {"exercise_name": "Dumbbell Overhead Press", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Control weight"},
+            {"exercise_name": "Inverted Row", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Choose appropriate variation"},
+            {"exercise_name": "Elbow Side Plank", "sets": 2, "reps": "30-45s hold per side", "rest": 60, "notes": "Straight line, core engaged"},
+            {"exercise_name": "Bird Dog", "sets": 2, "reps": "10-12 per side", "rest": 60, "notes": "Engage core, balance"},
+            {"exercise_name": "Dumbbell Curl", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Controlled movements"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [
+            {"notes": "Rest or Light Activity"}
+          ]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [ 
+            {"exercise_name": "Dumbbell Goblet Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Use appropriate weight"},
+            {"exercise_name": "Dumbbell Bench Press", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Chest activation"},
+            {"exercise_name": "Dumbbell Row Unilateral", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": "Stable core, avoid twisting"},
+            {"exercise_name": "Bodyweight Assisted Pull Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use assistance as needed"},
+            {"exercise_name": "Hand Plank", "sets": 2, "reps": "30-45s hold", "rest": 60, "notes": "Straight line, core engaged"},
+            {"exercise_name": "Glute Bridge", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Squeeze glutes"}
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Balanced diet with enough calories and protein",
+        "Progressive overload",
+        "Listen to your body",
+        "Exercise variety"
+      ]
+    }
+  }

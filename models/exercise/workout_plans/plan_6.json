@@ -1,0 +1,80 @@
+{
+    "bmi_level": 6,
+    "workout_plan": {
+      "training_split": "Full Body with Cardio",
+      "goal": "Improve cardio, strength, mobility; build foundation",
+      "training_level": "Beginner",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Controlled movements"},
+            {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Or Wall Push-Ups"},
+            {"exercise_name": "Adductor Stretch Seated Bilateral Static", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Resistance band or light dumbbells"},
+            {"exercise_name": "Bird Dog", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": "Engage core, balance"},
+            {"exercise_name": "Hand Plank", "sets": 2, "reps": "20-30s hold", "rest": 60, "notes": "From knees if needed"}
+          ],
+          "cardio": [
+            {"type": "Cardio", "exercise_name": "Treadmill Walk", "duration": "20-30 minutes", "notes": "Or Water Aerobics, Stationary Bike (light resistance)"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [
+            {"notes": "Rest or Light Activity (gentle stretching, short walk)"}
+          ]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "8-10", "rest": 60, "notes": ""},
+            {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Or Wall Push-Ups"},
+            {"exercise_name": "Band Pull Apart", "sets": 2, "reps": "15-20", "rest": 60, "notes": "Squeeze shoulder blades"},
+            {"exercise_name": "Bird Dog", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": ""},
+            {"exercise_name": "Elbow Side Plank", "sets": 2, "reps": "20-30s hold per side", "rest": 60, "notes": "From knees if needed"}
+          ],
+          "cardio": [
+            {"type": "Cardio", "duration": "20-30 minutes", "notes": "Different from Day 1"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [
+            {"notes": "Rest or Light Activity"}
+          ]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Controlled movements"},
+            {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Or Wall Push-Ups"},
+            {"exercise_name": "Adductor Stretch Seated Bilateral Static", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Resistance band or light dumbbells"},
+            {"exercise_name": "Bird Dog", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": "Engage core, balance"},
+            {"exercise_name": "Hand Plank", "sets": 2, "reps": "20-30s hold", "rest": 60, "notes": "From knees if needed"}
+          ],
+          "cardio": [
+            {"type": "Cardio", "duration": "30-40 minutes (if tolerated)", "notes": "Different from Day 1 & 3"}
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Medical clearance essential",
+        "Gradual progression",
+        "Healthy diet",
+        "Modifications as needed",
+        "Consistency is key"
+      ]
+    }
+  }

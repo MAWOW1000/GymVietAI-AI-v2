@@ -1,0 +1,77 @@
+{
+    "bmi_level": 3,
+    "workout_plan": {
+      "training_split": "Upper/Lower",
+      "goal": "Increase strength & muscle, improve fitness",
+      "training_level": "Beginner/Intermediate",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Barbell Reverse Grip Bench Press", "sets": 2, "reps": "8-10", "rest": "60-90", "notes": "Start with empty bar, gradual increase"},
+            {"exercise_name": "Dumbbell Row Bilateral", "sets": 2, "reps": "8-10 per side", "rest": "60-90", "notes": "Stable core, flat back"},
+            {"exercise_name": "Dumbbell Overhead Press", "sets": 2, "reps": "8-10", "rest": "60-90", "notes": "Control weight, gradual increase"},
+            {"exercise_name": "Bodyweight Assisted Pull Up", "sets": 2, "reps": "AMRAP", "rest": "60-90", "notes": "Decrease assistance/increase weight"},
+            {"exercise_name": "Dumbbell Curl", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Controlled movements"},
+            {"exercise_name": "Dumbbell Seated Overhead Tricep Extension", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Elbows close to head"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [
+            {"exercise_name": "Barbell Squat", "sets": 2, "reps": "8-10", "rest": "60-90", "notes": "Start with empty bar, gradual increase"},
+            {"exercise_name": "Dumbbell Romanian Deadlift", "sets": 2, "reps": "10-12", "rest": "60-90", "notes": "Hinge at hips, straight back"},
+            {"exercise_name": "Machine Leg Press", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Control weight, don't lock knees"},
+            {"exercise_name": "Machine Leg Extension", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Controlled, no momentum"},
+            {"exercise_name": "Machine Seated Leg Curl", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Squeeze hamstrings"},
+            {"exercise_name": "Calf Raises", "sets": 2, "reps": "15-20", "rest": 60, "notes": ""}
+          ]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"notes": "Rest or Active Recovery"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [
+            {"exercise_name": "Dumbbell Bench Press", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Muscle-mind connection"},
+            {"exercise_name": "Dumbbell Row Bilateral", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Lighter than Day 1"},
+            {"exercise_name": "Dumbbell Lateral Raise", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Shoulder stability"},
+            {"exercise_name": "Cable Rope Face Pulls", "sets": 2, "reps": "15-20", "rest": 60, "notes": "Light weight, rear deltoids"},
+            {"exercise_name": "Dumbbell Curl", "sets": 2, "reps": "12-15", "rest": 60, "notes": ""},
+            {"exercise_name": "Dumbbell Overhead Tricep Extension", "sets": 2, "reps": "12-15", "rest": 60, "notes": ""}
+          ]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Walking Lunge", "sets": 2, "reps": "10-12 per leg", "rest": 60, "notes": "Balance and control"},
+            {"exercise_name": "Glute Bridge", "sets": 2, "reps": "15-20", "rest": 60, "notes": "Glute activation"},
+            {"exercise_name": "Machine Seated Leg Curl", "sets": 2, "reps": "15-20", "rest": 60, "notes": "Squeeze hamstrings"},
+            {"exercise_name": "Machine Leg Extension", "sets": 2, "reps": "15-20", "rest": 60, "notes": "Controlled movements"},
+            {"exercise_name": "Calf Raises", "sets": 2, "reps": "20-25", "rest": 60, "notes": ""}
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Nutrition and recovery",
+        "Progressive overload",
+        "Listen to your body",
+        "Exercise variety"
+      ]
+    }
+  }

@@ -1,0 +1,80 @@
+{
+    "bmi_level": 5,
+    "workout_plan": {
+      "training_split": "Full Body with Cardio",
+      "goal": "Improve cardio, build muscle, burn calories",
+      "training_level": "Beginner/Intermediate",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Dumbbell Goblet Squat", "sets": 3, "reps": "10-12", "rest": "60-90", "notes": "Or Barbell Squats (572)"},
+            {"exercise_name": "Dumbbell Bench Press", "sets": 3, "reps": "10-12", "rest": "60-90", "notes": "Focus on chest activation"},
+            {"exercise_name": "Dumbbell Row Bilateral", "sets": 3, "reps": "10-12 per side", "rest": "60-90", "notes": "Keep core engaged"},
+            {"exercise_name": "Dumbbell Overhead Press", "sets": 3, "reps": "10-12", "rest": "60-90", "notes": "Dumbbells or barbells"},
+            {"exercise_name": "Hand Plank", "sets": 3, "reps": "30-60s hold", "rest": "60-90", "notes": "Engage core"}
+          ],
+          "cardio": [
+            {"type": "Cardio", "exercise_name": "Treadmill Walk", "duration": "30-45 minutes", "notes": "Or Cycling, Elliptical, etc."}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [
+            {"notes": "Rest or Light Activity (walking, stretching)"}
+          ]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"exercise_name": "Dumbbell Romanian Deadlift", "sets": 3, "reps": "10-12", "rest": "60-90", "notes": "Hinge at hips, straight back"},
+            {"exercise_name": "Dumbbell Reverse Lunge", "sets": 3, "reps": "10-12 per leg", "rest": "60-90", "notes": "Maintain balance"},
+            {"exercise_name": "Dumbbell Curl", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Controlled movement"},
+            {"exercise_name": "Dumbbell Overhead Tricep Extension", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Elbows close to head"},
+            {"exercise_name": "Bicycle Crunch", "sets": 3, "reps": "15-20 per side", "rest": 60, "notes": "Engage core"}
+          ],
+          "cardio": [
+            {"type": "Cardio", "duration": "30-45 minutes", "notes": "Choose different from Day 1"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [
+            {"notes": "Rest or Light Activity"}
+          ]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Bodyweight Squat", "set": 2, "reps": 15, "rest": 30, "notes": ""},
+            {"exercise_name": "Push Up", "set": 2, "reps": "AMRAP", "rest": 30, "notes": "Or Incline Push-Ups"},
+            {"exercise_name": "Dumbbell Row Bilateral", "set": 2, "reps": "10-12 per side", "rest": 30, "notes": ""},
+            {"exercise_name": "Cardio Jumping Jacks", "set": 2, "reps": 20, "rest": 30, "notes": ""},
+            {"exercise_name": "Mountain Climber", "set": 2, "reps": "15-20 per side", "rest": 30, "notes": ""}
+          ],
+          "cardio": [ 
+            {"type": "Cardio", "duration": "30-45 minutes", "notes": "Choose different from Day 1 & 3"}
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Calorie-controlled diet",
+        "Gradual progression",
+        "Listen to your body",
+        "Stay hydrated",
+        "Find enjoyable activities"
+      ]
+    }
+  }
