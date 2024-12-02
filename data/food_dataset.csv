@@ -1,0 +1,182 @@
+name,serving_size,serving_unit,calories,protein,carbs,fat,food_group
+apple,1.0,"medium (3"" dia)",94.64,0.47,25.13,0.31,Fruits
+banana,1.0,"medium (7"" to 7-7/8"" long)",105.02,1.29,26.95,0.39,Fruits
+orange,1.0,"fruit (2-7/8"" dia)",68.6,1.27,17.56,0.21,Fruits
+grapefruit,0.5,"fruit (3-3/4"" dia)",51.66,0.95,13.11,0.17,Fruits
+strawberries,5.0,large,28.8,0.6,6.91,0.27,Fruits
+blueberries,1.0,berry,0.78,0.01,0.2,0.0,Fruits
+raspberries,1.0,raspberry,1.04,0.02,0.24,0.01,Fruits
+mango,1.0,fruit without refuse,201.6,2.76,50.33,1.28,Fruits
+pineapple,0.5,"cup, chunks",41.25,0.45,10.82,0.1,Fruits
+avocado,1.0,"avocado, NS as to Florida or California",321.6,4.02,17.15,29.47,Fruits
+kiwi,1.0,"fruit (2"" dia)",42.09,0.79,10.12,0.36,Fruits
+watermelon,1.0,wedge (approx 1/16 of melon),85.8,1.74,21.59,0.43,Fruits
+peach,1.0,"large (2-3/4"" dia)",68.25,1.59,16.7,0.44,Fruits
+pear,1.0,medium,101.46,0.64,27.11,0.25,Fruits
+plum,1.0,"fruit (2-1/8"" dia)",30.36,0.46,7.54,0.18,Fruits
+cherries,1.0,cherry,5.17,0.09,1.31,0.02,Fruits
+grapes,10.0,grapes,33.81,0.35,8.87,0.08,Fruits
+lemon,1.0,"fruit (2-3/8"" dia)",24.36,0.92,7.83,0.25,Fruits
+lime,1.0,lime,20.1,0.47,7.06,0.13,Fruits
+pomegranate,1.0,"pomegranate (4"" dia)",234.06,4.71,52.73,3.3,Fruits
+figs,1.0,"medium (2-1/4"" dia)",37.0,0.38,9.59,0.15,Fruits
+dates,1.0,"date, pitted",20.02,0.17,5.33,0.03,Fruits
+prunes,1.0,"prune, pitted",22.8,0.21,6.07,0.04,Fruits
+raisins,1.0,small box (1.5 oz),128.57,1.32,34.05,0.2,Fruits
+apricots,1.0,apricot,16.8,0.49,3.89,0.14,Fruits
+cranberries,1.0,"cup, chopped",50.6,0.51,13.17,0.14,Fruits
+blackberries,1.0,blackberry,2.8,0.09,0.62,0.03,Fruits
+cantaloupe,1.0,"melon, medium (about 5"" dia)",187.68,4.64,45.04,1.05,Fruits
+honeydew melon,1.0,"melon (6"" - 7"" dia)",460.8,6.91,116.35,1.79,Fruits
+coconut,1.0,cup,387.6,2.66,44.07,23.79,Fruits
+guava,1.0,cup,112.2,4.21,23.63,1.57,Fruits
+passion fruit,1.0,cup,228.92,5.19,55.18,1.65,Fruits
+papaya,1.0,"cup 1"" pieces",62.35,0.68,15.69,0.38,Fruits
+lychee,1.0,cup,125.4,1.58,31.41,0.84,Fruits
+dragon fruit,1.0,fruit,61.0,1.14,14.66,0.52,Fruits
+star fruit,1.0,"medium (3-5/8"" long)",28.21,0.95,6.12,0.3,Fruits
+persimmon,1.0,"fruit (2-1/2"" dia)",117.6,0.97,31.23,0.32,Fruits
+tangerine,1.0,"medium (2-1/2"" dia)",46.64,0.71,11.74,0.27,Fruits
+clementine,1.0,fruit,34.78,0.63,8.89,0.11,Fruits
+kiwano,1.0,cup,102.52,4.15,17.61,2.94,Fruits
+plantain,1.0,medium,278.4,1.9,74.76,0.43,Fruits
+pomelo,1.0,fruit without refuse,231.42,4.63,58.59,0.24,Fruits
+acai,1.0,pack,75.4,1.06,5.38,6.26,Fruits
+goji berries,5.0,tbsp,97.72,3.99,21.58,0.11,Fruits
+elderberries,1.0,cup,105.85,0.96,26.68,0.73,Fruits
+mulberries,1.0,cup,60.2,2.02,13.72,0.55,Fruits
+boysenberries,1.0,cup,66.0,1.45,16.09,0.34,Fruits
+currants,1.0,cup,407.52,5.88,106.68,0.39,Fruits
+cherimoya,1.0,fruit without skin and seeds,176.25,3.69,41.62,1.6,Fruits
+longan,1.0,fruit without refuse,1.92,0.04,0.48,0.0,Fruits
+rambutan,1.0,cup,125.4,1.58,31.41,0.84,Fruits
+durian,1.0,"cup, chopped or diced",357.21,3.57,65.83,12.95,Fruits
+jackfruit,1.0,"cup, sliced",156.75,2.84,38.36,1.06,Fruits
+breadfruit,1.0,cup,226.6,2.35,59.66,0.51,Fruits
+sapodilla,1.0,sapodilla,141.1,0.75,33.93,1.87,Fruits
+soursop,1.0,"cup, pulp",148.5,2.25,37.89,0.68,Fruits
+fruit,1.0,cup,96.62,1.36,24.48,0.47,Fruits
+kumquat,1.0,fruit without refuse,13.49,0.36,3.02,0.16,Fruits
+quince,1.0,fruit without refuse,52.44,0.37,14.08,0.09,Fruits
+loquat,1.0,medium,7.52,0.07,1.94,0.03,Fruits
+feijoa,1.0,fruit without peel,25.62,0.3,6.39,0.18,Fruits
+broccoli,1.0,floret,3.5,0.24,0.72,0.04,Vegetables
+spinach,1.0,cup,41.4,5.35,6.75,0.47,Vegetables
+kale,1.0,"cup, chopped",36.4,2.47,7.32,0.52,Vegetables
+carrots,1.0,carrot,16.1,0.35,3.78,0.08,Vegetables
+sweet potato,1.0,"medium (2"" dia, 5"" long, raw)",102.6,2.29,23.61,0.17,Vegetables
+onion,1.0,medium,41.36,1.28,9.54,0.18,Vegetables
+garlic,1.0,clove,4.47,0.19,0.99,0.02,Vegetables
+bell peppers,1.0,pepper,31.54,1.08,7.49,0.23,Vegetables
+tomatoes,1.0,"medium whole (2-3/5"" dia)",22.14,1.08,4.78,0.25,Vegetables
+cucumber,1.0,medium,30.15,1.31,7.3,0.22,Vegetables
+lettuce,2.0,cups shredded,15.98,1.16,3.09,0.28,Vegetables
+mushrooms,1.0,mushroom,3.36,0.26,0.63,0.06,Vegetables
+zucchini,1.0,medium,30.0,2.28,5.38,0.72,Vegetables
+asparagus,5.0,spears,16.5,1.8,3.08,0.17,Vegetables
+cauliflower,1.0,medium head,132.25,10.58,23.63,2.59,Vegetables
+cabbage,0.5,"cup, shredded",17.25,0.95,4.13,0.05,Vegetables
+brussels sprouts,8.0,sprouts,60.48,4.28,11.93,0.84,Vegetables
+celery,1.0,"stalk, medium",6.4,0.28,1.19,0.07,Vegetables
+beets,1.0,beet,22.0,0.84,4.98,0.09,Vegetables
+radishes,1.0,"medium (3/4"" to 1"" dia)",0.72,0.03,0.15,0.0,Vegetables
+turnips,1.0,turnip,26.4,0.85,6.07,0.1,Vegetables
+parsnips,1.0,medium,69.58,1.29,16.67,0.29,Vegetables
+rutabaga,1.0,"cup, cubes",51.8,1.51,12.07,0.22,Vegetables
+artichokes,1.0,"artichoke, medium",63.6,3.47,14.34,0.41,Vegetables
+leeks,1.0,leek,38.44,1.0,9.45,0.25,Vegetables
+fennel,1.0,"cup, sliced",26.97,1.08,6.35,0.17,Vegetables
+okra,0.5,cup slices,17.6,1.5,3.61,0.17,Vegetables
+eggplant,1.0,medium eggplant,198.1,4.7,49.41,1.3,Vegetables
+squash,1.0,"cup, sliced",41.4,1.87,6.82,0.7,Vegetables
+peas,1.0,cup,134.4,8.58,25.01,0.35,Vegetables
+green beans,1.0,cup,43.75,2.36,9.85,0.35,Vegetables
+corn,1.0,ear medium,98.88,3.51,21.61,1.55,Vegetables
+potatoes,1.0,potato medium,160.89,4.33,36.59,0.22,Vegetables
+yams,1.0,"cup, cubes",157.76,2.03,37.37,0.19,Vegetables
+jicama,1.0,cup slices,45.6,0.86,10.58,0.11,Vegetables
+water chestnuts,0.5,cup slices,60.14,0.87,14.84,0.06,Vegetables
+bamboo shoots,1.0,cup,24.89,2.25,4.22,0.52,Vegetables
+bean sprouts,1.0,cup,26.04,2.52,5.2,0.11,Vegetables
+snow peas,1.0,cup,67.2,5.23,11.28,0.37,Vegetables
+chili peppers,1.0,pepper,18.0,0.84,3.96,0.2,Vegetables
+jalapenos,1.0,pepper,4.06,0.13,0.91,0.05,Vegetables
+habanero,1.0,pepper,18.0,0.84,3.96,0.2,Vegetables
+poblano peppers,1.0,pepper,12.8,0.55,2.97,0.11,Vegetables
+anaheim peppers,1.0,pepper,12.8,0.55,2.97,0.11,Vegetables
+serrano peppers,1.0,pepper,1.95,0.11,0.41,0.03,Vegetables
+cayenne,1.0,tsp,5.72,0.22,1.02,0.31,Vegetables
+sweet peppers,1.0,pepper,31.92,1.05,7.64,0.23,Vegetables
+banana peppers,1.0,cup,33.48,2.06,6.63,0.56,Vegetables
+cherry peppers,1.0,pepper,20.46,0.65,3.98,0.2,Vegetables
+pepperoncini,1.0,pepper,15.33,0.66,3.72,0.07,Vegetables
+pimento peppers,1.0,tbsp,2.76,0.13,0.61,0.04,Vegetables
+peppers,1.0,pepper,31.54,1.08,7.49,0.23,Vegetables
+scotch,1.0,shot,105.0,0.0,0.04,0.0,Vegetables
+shishito peppers,1.0,oz,9.07,0.49,1.9,0.12,Vegetables
+chicken breast,1.0,breast,198.0,37.22,0.0,4.28,Protein
+salmon,1.0,fillet,467.62,50.17,0.0,28.03,Protein
+beef,3.0,oz,220.15,22.19,0.0,14.1,Protein
+turkey,4.0,"oz, cooked",214.33,32.38,0.07,8.38,Protein
+eggs,1.0,large,71.5,6.28,0.36,4.76,Protein
+tofu,0.2,block,75.53,9.08,1.07,4.79,Protein
+lentils,1.0,cup,229.68,17.86,39.86,0.75,Protein
+beans,1.0,cup,238.76,12.07,53.7,0.94,Protein
+chickpeas,1.0,cup,268.96,14.53,44.97,4.25,Protein
+greek yogurt,6.0,oz,100.3,17.32,6.12,0.66,Protein
+cottage cheese,0.5,cup,106.58,12.09,3.68,4.68,Protein
+whey protein,1.0,scoop,112.64,25.0,2.0,0.5,Protein
+peanut butter,2.0,tbsp,188.16,7.02,7.67,15.85,Protein
+almond butter,1.0,tbsp,98.24,3.35,3.01,8.88,Protein
+cashew butter,1.0,tbsp,97.44,1.94,4.85,8.48,Protein
+pumpkin seeds,1.0,cup,285.44,11.87,34.4,12.42,Protein
+brown rice,0.5,cup,109.2,2.26,22.92,0.81,Grains
+quinoa,0.5,cup,111.0,4.07,19.7,1.78,Grains
+oats,0.5,cup,153.5,5.33,27.42,2.64,Grains
+whole wheat bread,1.0,slice,80.64,3.98,13.67,1.12,Grains
+pasta,1.0,cup spaghetti not packed,195.92,7.19,38.27,1.15,Grains
+corn,1.0,ear medium,98.88,3.51,21.61,1.55,Grains
+barley,1.0,cup,193.11,3.55,44.31,0.69,Grains
+bulgur,1.0,cup,151.06,5.61,33.82,0.44,Grains
+millet,1.0,cup,207.06,6.11,41.19,1.74,Grains
+farro,1.0,cup,337.0,14.54,70.58,2.13,Grains
+sorghum,1.0,cup,252.67,8.16,55.37,2.66,Grains
+teff,1.0,cup,254.52,9.75,50.05,1.64,Grains
+amaranth,1.0,cup,250.92,9.35,45.98,3.89,Grains
+buckwheat,1.0,cup,154.56,5.68,33.5,1.04,Grains
+rye,1.0,"slice, regular",82.88,2.72,15.46,1.06,Grains
+spelt,1.0,cup,246.38,10.67,51.29,1.65,Grains
+kamut,1.0,cup,227.04,9.82,47.47,1.43,Grains
+freekeh,1.0,cup,201.69,7.48,45.15,0.58,Grains
+wild rice,1.0,cup,165.64,6.54,35.0,0.56,Grains
+couscous,1.0,"cup, cooked",175.84,5.95,36.46,0.25,Grains
+polenta,1.0,cup,196.63,5.03,20.71,10.86,Grains
+popcorn,1.0,cup,44.0,0.59,4.36,2.69,Grains
+tortillas,1.0,"tortilla (approx 7-8"" dia)",159.25,4.26,27.24,3.48,Grains
+crackers,1.0,cracker,20.4,0.27,2.45,1.06,Grains
+pretzels,1.0,oz,108.86,2.85,22.79,0.83,Grains
+cereal,1.0,cup,105.28,3.39,20.5,1.88,Grains
+granola,0.5,cup,298.29,8.34,32.87,14.83,Grains
+flour,1.0,cup,455.0,12.91,95.39,1.23,Grains
+bread,1.0,slice,77.14,2.57,14.33,0.97,Grains
+bagels,1.0,medium bagel,277.2,11.09,55.0,1.39,Grains
+muffins,1.0,medium,423.75,5.07,59.89,18.16,Grains
+pancakes,1.0,"pancake (5"")",90.8,2.56,11.32,3.88,Grains
+waffles,1.0,"waffle, round (7"" dia)",218.25,5.93,24.68,10.58,Grains
+milk,1.0,cup,122.0,8.05,11.71,4.83,Dairy
+cheese,1.0,slice (1 oz),113.12,6.4,0.87,9.33,Dairy
+yogurt,1.0,container (6 oz),107.1,8.93,11.97,2.64,Dairy
+cottage cheese,0.5,cup,106.58,12.09,3.68,4.68,Dairy
+butter,1.0,tbsp,101.81,0.12,0.01,11.52,Dairy
+cream,1.0,fl oz,101.32,0.85,0.82,10.75,Dairy
+sour cream,1.0,tbsp,23.76,0.29,0.56,2.32,Dairy
+ice cream,1.0,cup,273.24,4.62,31.15,14.52,Dairy
+olive oil,1.0,tablespoon,119.34,0.0,0.0,13.5,Healthy Fats
+avocado oil,1.0,tbsp,123.76,0.0,0.0,14.0,Healthy Fats
+almonds,1.0,almond,7.71,0.27,0.27,0.68,Healthy Fats
+walnuts,1.0,walnut half,13.28,0.31,0.28,1.32,Healthy Fats
+chia seeds,1.0,tbsp,58.32,1.98,5.05,3.69,Healthy Fats
+flax seeds,1.0,"tbsp, whole",55.0,1.88,2.97,4.34,Healthy Fats
+dark chocolate,1.0,oz,154.79,1.38,17.34,8.87,Healthy Fats
+coconut oil,1.0,tbsp,121.31,0.0,0.0,13.47,Healthy Fats
+pumpkin seeds,1.0,cup,285.44,11.87,34.4,12.42,Healthy Fats
