@@ -1,0 +1,181 @@
+name,calories,protein,carbs,fat,food_group
+apple,52.0,0.26,13.81,0.17,Fruits
+banana,89.0,1.09,22.84,0.33,Fruits
+orange,49.0,0.91,12.54,0.15,Fruits
+grapefruit,42.0,0.77,10.66,0.14,Fruits
+strawberries,32.0,0.67,7.68,0.3,Fruits
+blueberries,57.0,0.74,14.49,0.33,Fruits
+raspberries,52.0,1.2,11.94,0.65,Fruits
+mango,60.0,0.82,14.98,0.38,Fruits
+pineapple,50.0,0.54,13.12,0.12,Fruits
+avocado,160.0,2.0,8.53,14.66,Fruits
+kiwi,61.0,1.14,14.66,0.52,Fruits
+watermelon,30.0,0.61,7.55,0.15,Fruits
+peach,39.0,0.91,9.54,0.25,Fruits
+pear,57.0,0.36,15.23,0.14,Fruits
+plum,46.0,0.7,11.42,0.28,Fruits
+cherries,63.0,1.06,16.01,0.2,Fruits
+grapes,69.0,0.72,18.1,0.16,Fruits
+lemon,29.0,1.1,9.32,0.3,Fruits
+lime,30.0,0.7,10.54,0.2,Fruits
+pomegranate,83.0,1.67,18.7,1.17,Fruits
+figs,74.0,0.75,19.18,0.3,Fruits
+dates,282.0,2.45,75.03,0.39,Fruits
+prunes,240.0,2.18,63.88,0.38,Fruits
+raisins,299.0,3.07,79.18,0.46,Fruits
+apricots,48.0,1.4,11.12,0.39,Fruits
+cranberries,46.0,0.46,11.97,0.13,Fruits
+blackberries,43.0,1.39,9.61,0.49,Fruits
+cantaloupe,34.0,0.84,8.16,0.19,Fruits
+honeydew melon,36.0,0.54,9.09,0.14,Fruits
+coconut,456.0,3.13,51.85,27.99,Fruits
+guava,68.0,2.55,14.32,0.95,Fruits
+passion fruit,97.0,2.2,23.38,0.7,Fruits
+papaya,43.0,0.47,10.82,0.26,Fruits
+lychee,66.0,0.83,16.53,0.44,Fruits
+dragon fruit,61.0,1.14,14.66,0.52,Fruits
+star fruit,31.0,1.04,6.73,0.33,Fruits
+persimmon,70.0,0.58,18.59,0.19,Fruits
+tangerine,53.0,0.81,13.34,0.31,Fruits
+clementine,47.0,0.85,12.02,0.15,Fruits
+kiwano,44.0,1.78,7.56,1.26,Fruits
+plantain,116.0,0.79,31.15,0.18,Fruits
+pomelo,38.0,0.76,9.62,0.04,Fruits
+acai,75.4,1.06,5.38,6.26,Fruits
+goji berries,349.0,14.26,77.06,0.39,Fruits
+elderberries,73.0,0.66,18.4,0.5,Fruits
+mulberries,43.0,1.44,9.8,0.39,Fruits
+boysenberries,50.0,1.1,12.19,0.26,Fruits
+currants,283.0,4.08,74.08,0.27,Fruits
+cherimoya,75.0,1.57,17.71,0.68,Fruits
+longan,60.0,1.31,15.14,0.1,Fruits
+rambutan,66.0,0.83,16.53,0.44,Fruits
+durian,147.0,1.47,27.09,5.33,Fruits
+jackfruit,95.0,1.72,23.25,0.64,Fruits
+breadfruit,103.0,1.07,27.12,0.23,Fruits
+sapodilla,83.0,0.44,19.96,1.1,Fruits
+soursop,66.0,1.0,16.84,0.3,Fruits
+fruit,59.5,0.83,15.07,0.29,Fruits
+kumquat,71.0,1.88,15.9,0.86,Fruits
+quince,57.0,0.4,15.3,0.1,Fruits
+loquat,47.0,0.43,12.14,0.2,Fruits
+feijoa,61.0,0.71,15.21,0.42,Fruits
+broccoli,35.0,2.38,7.18,0.41,Vegetables
+spinach,23.0,2.97,3.75,0.26,Vegetables
+kale,28.0,1.9,5.63,0.4,Vegetables
+carrots,35.0,0.76,8.22,0.18,Vegetables
+sweet potato,90.0,2.01,20.71,0.15,Vegetables
+onion,44.0,1.36,10.15,0.19,Vegetables
+garlic,149.0,6.36,33.06,0.5,Vegetables
+bell peppers,27.67,0.95,6.57,0.2,Vegetables
+tomatoes,18.0,0.88,3.89,0.2,Vegetables
+cucumber,15.0,0.65,3.63,0.11,Vegetables
+lettuce,17.0,1.23,3.29,0.3,Vegetables
+mushrooms,28.0,2.17,5.29,0.47,Vegetables
+zucchini,15.0,1.14,2.69,0.36,Vegetables
+asparagus,22.0,2.4,4.11,0.22,Vegetables
+cauliflower,23.0,1.84,4.11,0.45,Vegetables
+cabbage,23.0,1.27,5.51,0.06,Vegetables
+brussels sprouts,36.0,2.55,7.1,0.5,Vegetables
+celery,16.0,0.69,2.97,0.17,Vegetables
+beets,44.0,1.68,9.96,0.18,Vegetables
+radishes,16.0,0.68,3.4,0.1,Vegetables
+turnips,22.0,0.71,5.06,0.08,Vegetables
+parsnips,71.0,1.32,17.01,0.3,Vegetables
+rutabaga,37.0,1.08,8.62,0.16,Vegetables
+artichokes,53.0,2.89,11.95,0.34,Vegetables
+leeks,31.0,0.81,7.62,0.2,Vegetables
+fennel,31.0,1.24,7.3,0.2,Vegetables
+okra,22.0,1.87,4.51,0.21,Vegetables
+eggplant,35.0,0.83,8.73,0.23,Vegetables
+squash,23.0,1.04,3.79,0.39,Vegetables
+peas,84.0,5.36,15.63,0.22,Vegetables
+green beans,35.0,1.89,7.88,0.28,Vegetables
+corn,96.0,3.41,20.98,1.5,Vegetables
+potatoes,93.0,2.5,21.15,0.13,Vegetables
+yams,116.0,1.49,27.48,0.14,Vegetables
+jicama,38.0,0.72,8.82,0.09,Vegetables
+water chestnuts,97.0,1.4,23.94,0.1,Vegetables
+bamboo shoots,19.0,1.72,3.22,0.4,Vegetables
+bean sprouts,21.0,2.03,4.19,0.09,Vegetables
+snow peas,42.0,3.27,7.05,0.23,Vegetables
+chili peppers,40.0,1.87,8.81,0.44,Vegetables
+jalapenos,29.0,0.91,6.5,0.37,Vegetables
+habanero,40.0,1.87,8.81,0.44,Vegetables
+poblano peppers,20.0,0.86,4.64,0.17,Vegetables
+anaheim peppers,20.0,0.86,4.64,0.17,Vegetables
+serrano peppers,32.0,1.74,6.7,0.44,Vegetables
+cayenne,318.0,12.01,56.63,17.27,Vegetables
+sweet peppers,28.0,0.92,6.7,0.2,Vegetables
+banana peppers,27.0,1.66,5.35,0.45,Vegetables
+cherry peppers,31.0,0.99,6.03,0.3,Vegetables
+pepperoncini,21.0,0.9,5.1,0.1,Vegetables
+pimento peppers,23.0,1.1,5.1,0.3,Vegetables
+peppers,27.67,0.95,6.57,0.2,Vegetables
+scotch,250.0,0.0,0.1,0.0,Vegetables
+shishito peppers,32.0,1.74,6.7,0.44,Vegetables
+chicken breast,165.0,31.02,0.0,3.57,Protein
+salmon,206.0,22.1,0.0,12.35,Protein
+beef,259.0,26.11,0.0,16.59,Protein
+turkey,189.0,28.55,0.06,7.39,Protein
+eggs,143.0,12.56,0.72,9.51,Protein
+tofu,83.0,9.98,1.18,5.26,Protein
+lentils,116.0,9.02,20.13,0.38,Protein
+beans,94.0,4.75,21.14,0.37,Protein
+chickpeas,164.0,8.86,27.42,2.59,Protein
+greek yogurt,59.0,10.19,3.6,0.39,Protein
+cottage cheese,98.0,11.12,3.38,4.3,Protein
+whey protein,352.0,78.13,6.25,1.56,Protein
+peanut butter,588.0,21.93,23.98,49.54,Protein
+almond butter,614.0,20.96,18.82,55.5,Protein
+cashew butter,609.0,12.12,30.3,53.03,Protein
+brown rice,112.0,2.32,23.51,0.83,Grains
+quinoa,120.0,4.4,21.3,1.92,Grains
+oats,379.0,13.15,67.7,6.52,Grains
+whole wheat bread,252.0,12.45,42.71,3.5,Grains
+pasta,158.0,5.8,30.86,0.93,Grains
+corn,96.0,3.41,20.98,1.5,Grains
+barley,123.0,2.26,28.22,0.44,Grains
+bulgur,83.0,3.08,18.58,0.24,Grains
+millet,119.0,3.51,23.67,1.0,Grains
+farro,337.0,14.54,70.58,2.13,Grains
+sorghum,70.0,2.26,15.34,0.74,Grains
+teff,101.0,3.87,19.86,0.65,Grains
+amaranth,102.0,3.8,18.69,1.58,Grains
+buckwheat,92.0,3.38,19.94,0.62,Grains
+rye,259.0,8.5,48.3,3.3,Grains
+spelt,127.0,5.5,26.44,0.85,Grains
+kamut,132.0,5.71,27.6,0.83,Grains
+freekeh,83.0,3.08,18.58,0.24,Grains
+wild rice,101.0,3.99,21.34,0.34,Grains
+couscous,112.0,3.79,23.22,0.16,Grains
+polenta,81.93,2.1,8.63,4.52,Grains
+popcorn,557.0,7.5,55.16,34.02,Grains
+tortillas,325.0,8.7,55.6,7.1,Grains
+crackers,510.0,6.64,61.3,26.43,Grains
+pretzels,384.0,10.04,80.39,2.93,Grains
+cereal,376.0,12.09,73.23,6.73,Grains
+granola,489.0,13.67,53.88,24.31,Grains
+flour,364.0,10.33,76.31,0.98,Grains
+bread,266.0,8.85,49.42,3.33,Grains
+bagels,264.0,10.56,52.38,1.32,Grains
+muffins,375.0,4.49,53.0,16.07,Grains
+pancakes,227.0,6.4,28.3,9.7,Grains
+waffles,291.0,7.9,32.9,14.1,Grains
+milk,50.0,3.3,4.8,1.98,Dairy
+cheese,404.0,22.87,3.09,33.31,Dairy
+yogurt,63.0,5.25,7.04,1.55,Dairy
+cottage cheese,98.0,11.12,3.38,4.3,Dairy
+butter,717.0,0.85,0.06,81.11,Dairy
+cream,340.0,2.84,2.74,36.08,Dairy
+sour cream,198.0,2.44,4.63,19.35,Dairy
+ice cream,207.0,3.5,23.6,11.0,Dairy
+olive oil,884.0,0.0,0.0,100.0,Healthy Fats
+avocado oil,884.0,0.0,0.0,100.0,Healthy Fats
+almonds,598.0,20.96,21.01,52.54,Healthy Fats
+walnuts,654.0,15.23,13.71,65.21,Healthy Fats
+chia seeds,486.0,16.54,42.12,30.74,Healthy Fats
+flax seeds,534.0,18.29,28.88,42.16,Healthy Fats
+dark chocolate,546.0,4.88,61.17,31.28,Healthy Fats
+coconut oil,892.0,0.0,0.0,99.06,Healthy Fats
+pumpkin seeds,446.0,18.55,53.75,19.4,Healthy Fats
