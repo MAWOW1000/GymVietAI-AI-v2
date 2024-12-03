@@ -74,5 +74,80 @@
       "Proper form",
       "Adequate rest"
       ]
+    },
+    "workout_plan_vn": {
+      "training_split": "Thân trên/Thân dưới",
+      "goal": "Cân đối (sức mạnh, phát triển cơ, sức bền)",
+      "training_level": "Người mới/Trung bình",
+      "days": [
+        {
+          "day": "Ngày 1",
+          "exercises": [
+            {"exercise_name": "Barbell Reverse Grip Bench Press", "sets": 3, "reps": "8-12", "rest": "60-90", "notes": "Chuyển động có kiểm soát, ROM đầy đủ"},
+            {"exercise_name": "Dumbbell Row Bilateral", "sets": 3, "reps": "8-12", "rest": "60-90", "notes": "Lõi ổn định"},
+            {"exercise_name": "Dumbbell Overhead Press", "sets": 3, "reps": "8-12", "rest": "60-90", "notes": "Kiểm soát tạ"},
+            {"exercise_name": "Chin Ups", "sets": 3, "reps": "Càng nhiều lần càng tốt", "rest": "60-90", "notes": "Hoặc kéo xà đơn"},
+            {"exercise_name": "Dumbbell Curl", "sets": 3, "reps": "10-15", "rest": 60, "notes": "Kiểm soát tạ"},
+            {"exercise_name": "Cable Rope Pushdown", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Khủy tay gần cơ thể"}
+          ]
+        },
+        {
+          "day": "Ngày 2",
+          "exercises": [
+            {"exercise_name": "Barbell Squat", "sets": 3, "reps": "8-12", "rest": "90-120", "notes": "Tư thế đúng, sâu nhất có thể"},
+            {"exercise_name": "Dumbbell Romanian Deadlift", "sets": 3, "reps": "10-15", "rest": "90-120", "notes": "Bản lề ở hông, lưng thẳng"},
+            {"exercise_name": "Machine Leg Press", "sets": 3, "reps": "10-15", "rest": 90, "notes": "Kiêm soát tạ"},
+            {"exercise_name": "Machine Leg Extension", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Kiểm soát chuyển động"},
+            {"exercise_name": "Machine Seated Leg Curl", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Siết gân khoeo"},
+            {"exercise_name": "Dumbbell Calf Raise", "sets": 3, "reps": "15-20", "rest": 60, "notes": "ROM đầy đủ"}
+          ]
+        },
+        {
+          "day": "Ngày 3",
+          "exercises": [
+            {"notes": "Nghỉ hoặc tập nhẹ (thể dục nhẹ, giãn cơ, yoga)"}
+          ]
+        },
+        {
+          "day": "Ngày 4",
+          "exercises": [
+            {"exercise_name": "Dumbbell Bench Press", "sets": 3, "reps": "12-15", "rest": "60-75", "notes": "Nhẹ hơn ngày 1"},
+            {"exercise_name": "Dumbbell Row Bilateral", "sets": 3, "reps": "12-15", "rest": "60-75", "notes": "Nhẹ hơn ngày 1"},
+            {"exercise_name": "Dumbbell Arnold Press", "sets": 3, "reps": "10-15", "rest": "60-75", "notes": "Chuyển động có kiểm soát"},
+            {"exercise_name": "Cable Rope Face Pulls", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Tạ nhẹ, vai sau"},
+            {"exercise_name": "Dumbbell Curl", "sets": 2, "reps": "15-20", "rest": 45, "notes": "Nhẹ hơn ngày 1"},
+            {"exercise_name": "Dumbbell Overhead Tricep Extension", "sets": 2, "reps": "15-20", "rest": 45, "notes": "Nhẹ hơn ngày 1"}
+          ]
+        },
+         {
+          "day": "Ngày 5",
+          "exercises": [
+            {"exercise_name": "Walking Lunge", "sets": 3, "reps": "10-12 mỗi chân", "rest": "60-75", "notes": "Cân bằng và kiểm soát"},
+            {"exercise_name": "Glute Bridge", "sets": 3, "reps": "15-20", "rest": "60-75", "notes": "Siết cơ mông"},
+            {"exercise_name": "Machine Seated Leg Curl", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Siết gân khoeo"},
+            {"exercise_name": "Machine Leg Extension", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Chuyển động kiểm soát"},
+            {"exercise_name": "Calf Raises", "sets": 3, "reps": "20-25", "rest": 45, "notes": "ROM đầy đủ"}
+  
+          ]
+        },
+        {
+          "day": "Ngày 6",
+          "exercises": [
+            {"notes": "Nghỉ ngơi"}
+          ]
+        },
+        {
+          "day": "Ngày 7",
+          "exercises": [
+            {"notes": "Nghỉ ngơi"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Chế độ ăn cân đối",
+        "Tăng cường quá tải",
+        "Tư thế đúng",
+        "Nghỉ ngơi đủ"
+      ]
     }
   }
