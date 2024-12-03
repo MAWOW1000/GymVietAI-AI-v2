@@ -69,5 +69,75 @@
       "Gradual progression",
       "Rest and recovery"
     ]
+  },
+  "workout_plan_vn": {
+    "training_split": "Toàn thân",
+    "goal": "Xây dựng nền tảng, tăng cơ",
+    "training_level": "Người mới",
+    "days": [
+      {
+        "day": "Ngày 1",
+        "exercises": [
+          {"exercise_name": "Bodyweight Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Tư thế chuẩn, sâu và thoải mái"},
+          {"exercise_name": "Incline Push Up", "sets": 2, "reps": "Càng nhiều lần càng tốt", "rest": 60, "notes": "Nâng tay lên, sửa đổi nếu cần"},
+          {"exercise_name": "Bodyweight Assisted Pull Up", "sets": 2, "reps": "Càng nhiều lần càng tốt", "rest": 60, "notes": "Sử dụng trợ giúp, giảm dần theo thời gian"},
+          {"exercise_name": "Hand Plank", "sets": 2, "reps": "Giữ 20-30s", "rest": 60, "notes": "Đường thẳng từ đầu đến gót chân"},
+          {"exercise_name": "Bird Dog", "sets": 2, "reps": "10-12 mỗi bên", "rest": 60, "notes": "Tập trung vào cốt lõi, cân bằng"},
+          {"exercise_name": "Glute Bridge", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Siết chặt mông"}
+        ]
+      },
+      {
+        "day": "Ngày 2",
+        "exercises": [
+          {"notes": "Nghỉ ngơi hoặc hoạt động nhẹ"}
+        ]
+      },
+      {
+        "day": "Ngày 3",
+        "exercises": [
+          {"exercise_name": "Bodyweight Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Chuyển động có kiểm soát"},
+          {"exercise_name": "Incline Push Up", "sets": 2, "reps": "Càng nhiều lần càng tốt", "rest": 60, "notes": ""},
+          {"exercise_name": "Inverted Row", "sets": 2, "reps": "Càng nhiều lần càng tốt", "rest": 60, "notes": "Bàn chắc chắn hoặc TRX, hạ xuống từ từ"},
+          {"exercise_name": "Elbow Side Plank", "sets": 2, "reps": "Giữ 20-30s mỗi bên", "rest": 60, "notes": "Thẳng người"},
+          {"exercise_name": "Supermans", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Mông và lưng dưới"},
+          {"exercise_name": "Laying Leg Raises", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Lưng dưới trên sàn nhà."}
+        ]
+      },
+      {
+        "day": "Ngày 4",
+        "exercises": [
+          {"notes": "Nghỉ ngơi hoặc hoạt động nhẹ"}
+        ]
+      },
+      {
+        "day": "Ngày 5",
+        "exercises": [
+          {"exercise_name": "Bodyweight Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Tư thế chuẩn, sâu và thoải mái"},
+          {"exercise_name": "Incline Push Up", "sets": 2, "reps": "Càng nhiều lần càng tốt", "rest": 60, "notes": "Nâng tay lên, sửa đổi nếu cần"},
+          {"exercise_name": "Bodyweight Assisted Pull Up", "sets": 2, "reps": "Càng nhiều lần càng tốt", "rest": 60, "notes": "Sử dụng trợ giúp, giảm dần theo thời gian"},
+          {"exercise_name": "Hand Plank", "sets": 2, "reps": "Giữ 20-30s", "rest": 60, "notes": "Đường thẳng từ đầu đến gót chân"},
+          {"exercise_name": "Bird Dog", "sets": 2, "reps": "10-12 mỗi bên", "rest": 60, "notes": "Tập trung vào cốt lõi, cân bằng"},
+          {"exercise_name": "Glute Bridge", "sets": 2, "reps": "12-15", "rest": 60, "notes": "Siết chặt mông"}
+        ]
+      },
+      {
+        "day": "Ngày 6",
+        "exercises": [
+          {"notes": "Nghỉ ngơi"}
+        ]
+      },
+      {
+        "day": "Ngày 7",
+        "exercises": [
+          {"notes": "Nghỉ ngơi"}
+        ]
+      }
+    ],
+    "important_considerations": [
+      "Dinh dưỡng rất quan trọng, hãy tham khảo ý kiến chuyên gia dinh dưỡng",
+      "Khuyến cáo hướng dẫn y tế",
+      "Tiến triển dần dần",
+      "Nghỉ ngơi và phục hồi"
+    ]
   }
 }

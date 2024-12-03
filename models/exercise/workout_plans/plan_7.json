@@ -83,5 +83,89 @@
         "Healthy diet",
         "Listen to your body"
       ]
+    },
+    "workout_plan_vn": {
+      "training_split": "Toàn thân",
+      "goal": "Cải thiện sự linh hoạt, tăng cường hoạt động, tăng cường cardio",
+      "training_level": "Người mới",
+      "days": [
+        {
+          "day": "Ngày 1",
+          "exercises": [
+            {"exercise_name": "Cardio Quick Feet", "sets": 2, "reps": "10-15", "rest": "60-90", "notes": "Hành quân ngồi (trên ghế, nhẹ nhàng, bắt chước chuyển động hành quân); Sử dụng Quick Feet như một chuyển động ngồi nhịp nhàng"},
+            {"exercise_name": "Push Up", "sets": 2, "reps": "Càng nhiều lần càng tốt", "rest": "60-90", "notes": "Chống đẩy trên tường (hoặc chống đẩy nghiêng nếu dễ hơn)"}, 
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "5-8", "rest": "60-90", "notes": "Đứng trên ghế (sử dụng tay để hỗ trợ)"},
+            {"exercise_name": "Backward Arm Circle", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Nâng tay qua đầu (ngồi hoặc đứng, nhẹ/không có tạ)"}, 
+            {"exercise_name": "Dumbbell Seated Calf Raise", "sets": 1, "reps": "10-12", "rest": 60, "notes": "Bài tập gập bắp tay khi ngồi (tạ nhẹ hoặc dây kháng lực)"},
+            {"exercise_name": "Dumbbell Overhead Tricep Extension", "sets": 1, "reps": "10-12", "rest": 60, "notes": "Bài tập duỗi cơ tam đầu trên đầu (trọng lượng nhẹ hoặc dây kháng lực, tập trung vào cơ tam đầu)"}
+          ],
+          "cardio": [
+            {"type": "Thể dục nhịp điệu dưới nước", "duration": "20-30 phút", "notes": "Rất khuyến khích"},
+            {"type": "Cardio", "exercise_name": "Đi bộ trên máy chạy bộ", "duration": "10-15 phút (Nếu không có thể dục nhịp điệu dưới nước)"}
+          ]
+        },
+        {
+          "day": "Ngày 2",
+          "exercises": [
+            {"notes": "Nghỉ ngơi"}
+          ]
+        },
+        {
+          "day": "Ngày 3",
+          "exercises": [
+            {"exercise_name": "Seated Forward Bend", "sets": 2, "reps": "Giữ 30-60s", "rest": 60, "notes": "Ngồi gập người về phía trước (thay đổi bằng cách uốn cong đầu gối)"}, 
+            {"exercise_name": "Seated Ulnar Nerve Slider", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Thanh trượt thần kinh trụ ngồi (Sử dụng chuyển động cánh tay này dọc theo tường như một thanh trượt tường ngồi)"},
+            {"exercise_name": "Bird Dog", "sets": 2, "reps": "5-8 mỗi bên", "rest": 60, "notes": "Động tác Bird Dog (sửa đổi trên đầu gối)"},
+            {"exercise_name": "Dumbbell Standing Hip Abduction", "sets": 2, "reps": "10-12 mỗi bên", "rest": 60, "notes": "Tách chân đứng (sử dụng ghế để cân bằng)"},  
+            {"exercise_name": "Treadmill Walk", "duration": "10-15 phút", "notes": "Đi bộ (tốc độ nhẹ nhàng, bề mặt phẳng, nếu cần thì chia thành các đoạn nhỏ)"}
+        ],
+        "cardio": [
+          {"type": "Thể dục nhịp điệu dưới nước", "duration": "20-30 phút", "notes": "Rất khuyến khích"},
+          {"type": "Cardio", "exercise_name": "Xe đạp tập thể dục", "duration": "10-15 phút (Nếu không có thể dục nhịp điệu dưới nước)", "notes": "Kháng lực nhẹ"}
+          ]
+        },
+        {
+          "day": "Ngày 4",
+          "exercises": [
+            {"notes": "Nghỉ ngơi"}
+          ]
+        },
+        {
+          "day": "Ngày 5",
+          "exercises": [
+            {"exercise_name": "Cardio Quick Feet", "sets": 2, "reps": "10-15", "rest": "60-90", "notes": "Hành quân ngồi (trên ghế, nhẹ nhàng, bắt chước chuyển động hành quân); Sử dụng Quick Feet như một chuyển động ngồi nhịp nhàng"},
+            {"exercise_name": "Push Up", "sets": 2, "reps": "Càng nhiều lần càng tốt", "rest": "60-90", "notes": "Chống đẩy trên tường (hoặc chống đẩy nghiêng nếu dễ hơn)"}, 
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "5-8", "rest": "60-90", "notes": "Đứng trên ghế (sử dụng tay để hỗ trợ)"},
+            {"exercise_name": "Backward Arm Circle", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Nâng tay qua đầu (ngồi hoặc đứng, nhẹ/không có tạ)"}, 
+            {"exercise_name": "Dumbbell Seated Calf Raise", "sets": 1, "reps": "10-12", "rest": 60, "notes": "Bài tập gập bắp tay khi ngồi (tạ nhẹ hoặc dây kháng lực)"},
+            {"exercise_name": "Dumbbell Overhead Tricep Extension", "sets": 1, "reps": "10-12", "rest": 60, "notes": "Bài tập duỗi cơ tam đầu trên đầu (trọng lượng nhẹ hoặc dây kháng lực, tập trung vào cơ tam đầu)"}
+          ],
+          "cardio": [
+            {"type": "Thể dục nhịp điệu dưới nước", "duration": "20-30 phút", "notes": "Rất khuyến khích"},
+            {"type": "Cardio", "exercise_name": "Đi bộ trên máy chạy bộ", "duration": "10-15 phút (Nếu không có thể dục nhịp điệu dưới nước)"}
+          ]
+  
+  
+        },
+        {
+          "day": "Ngày 6",
+          "exercises": [
+            {"notes": "Nghỉ ngơi"}
+          ]
+        },
+        {
+          "day": "Ngày 7",
+          "exercises": [
+            {"notes": "Nghỉ ngơi"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Khuyến khích giám sát y tế",
+        "Bắt đầu từ từ, ưu tiên sự thoải mái",
+        "Tiến triển dần dần",
+        "Chế độ ăn uống lành mạnh",
+        "Lắng nghe cơ thể bạn"
+      ]
     }
   }
