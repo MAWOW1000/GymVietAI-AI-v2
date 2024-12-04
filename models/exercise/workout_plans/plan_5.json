@@ -1,6 +1,6 @@
 {
     "bmi_level": 5,
-    "workout_plan": {
+    "workout_plan_1": {
       "training_split": "Full Body with Cardio",
       "goal": "Improve cardio, build muscle, burn calories",
       "training_level": "Beginner/Intermediate",
@@ -77,7 +77,84 @@
         "Find enjoyable activities"
       ]
     },
-    "workout_plan_vi": {
+    "workout_plan_2": {
+      "training_split": "Full Body with Cardio",
+      "goal": "Improve cardio, build muscle, burn calories",
+      "training_level": "Beginner/Intermediate",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Barbell Squat", "sets": 3, "reps": "10-12", "rest": "60-90", "notes": "If comfortable with barbell; otherwise, use Dumbbell Goblet Squats"},
+            {"exercise_name": "Dumbbell Incline Bench Press", "sets": 3, "reps": "10-12", "rest": "60-90", "notes": "Focus on controlled movement"},
+            {"exercise_name": "Dumbbell Row Unilateral", "sets": 3, "reps": "10-12 per side", "rest": "60-90", "notes": "Maintain good form"},
+            {"exercise_name": "Dumbbell Arnold Press", "sets": 3, "reps": "10-12", "rest": "60-90", "notes": "Full range of motion"}, 
+            {"exercise_name": "Forearm Plank", "sets": 3, "reps": "30-60s hold", "rest": "60-90", "notes": "Engage core; maintain a straight line"} 
+          ],
+          "cardio": [
+            {"type": "Treadmill Walk", "exercise_name": "Treadmill Walk", "duration": "30-45 minutes", "notes": "Or brisk walking outdoors"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [
+            {"notes": "Rest or Light Activity"}
+          ]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"exercise_name": "Barbell Romanian Deadlift", "sets": 3, "reps": "10-12", "rest": "60-90", "notes": "Keep back straight, hinge at the hips; can use dumbbells if needed"}, 
+            {"exercise_name": "Dumbbell Reverse Lunge", "sets": 3, "reps": "10-12 per leg", "rest": "60-90", "notes": "Focus on balance and control"},
+            {"exercise_name": "Dumbbell Hammer Curl", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Control the movement"}, 
+            {"exercise_name": "Cable Rope Overhead Tricep Extension", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Elbows close to head, controlled movement"},
+            {"exercise_name": "Bicycle Crunch", "sets": 3, "reps": "15-20 per side", "rest": 60, "notes": "Engage obliques"}
+          ],
+          "cardio": [
+            {"type": "Cycling", "exercise_name": "Stationary Bike", "duration": "30-45 minutes", "notes": "Moderate resistance"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [
+            {"notes": "Rest or Light Activity"}
+          ]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Bodyweight Squat", "sets": 1, "reps": 15, "rest": 30, "notes": ""}, 
+            {"exercise_name": "Incline Push Up", "sets": 1, "reps": "AMRAP", "rest": 30, "notes": "Or Knee Push Ups if needed"}, 
+            {"exercise_name": "Dumbbell Row Bilateral", "sets": 1, "reps": "10-12 per side", "rest": 30, "notes": ""},
+            {"exercise_name": "Cardio Jumping Jacks", "sets": 1, "reps": 20, "rest": 30, "notes": ""},
+            {"exercise_name": "Mountain Climber", "sets": 1, "reps": "15-20 per side", "rest": 30, "notes": ""}
+          ],
+          "cardio": [
+            {"type": "Elliptical", "duration": "30-45 minutes", "notes": "Moderate resistance"}
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Calorie-controlled diet",
+        "Gradual progression",
+        "Listen to your body",
+        "Stay hydrated",
+        "Find enjoyable activities"
+      ]
+    },
+    "workout_plan_1_vi": {
       "training_split": "Toàn thân với Cardio",
       "goal": "Cải thiện cardio, xây dựng cơ bắp, đốt cháy calo",
       "training_level": "Người mới/Trung bình",

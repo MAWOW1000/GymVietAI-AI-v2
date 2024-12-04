@@ -1,6 +1,6 @@
 {
     "bmi_level": 6,
-    "workout_plan": {
+    "workout_plan_1": {
       "training_split": "Full Body with Cardio",
       "goal": "Improve cardio, strength, mobility; build foundation",
       "training_level": "Beginner",
@@ -77,7 +77,76 @@
         "Consistency is key"
       ]
     },
-    "workout_plan_vi": {
+    "workout_plan_2": {
+      "training_split": "Full Body with Cardio",
+      "goal": "Improve cardio, strength, mobility; build foundation",
+      "training_level": "Beginner",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Bodyweight Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Chair for support if needed"},
+            {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Wall or elevated surface; on knees if needed"},
+            {"exercise_name": "Band Pull Apart", "sets": 2, "reps": "15-20", "rest": 60, "notes": "Improve shoulder mobility and posture"},
+            {"exercise_name": "Bird Dog", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": "Engage core"},
+            {"exercise_name": "Glute Bridge", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Feet elevated if comfortable"}
+          ],
+          "cardio": [
+            {"type": "Walking", "exercise_name": "Treadmill Walk", "duration": "20-30 minutes", "notes": "Or walking outdoors on a flat surface"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [{"notes": "Rest or Light Activity"}]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Use a sturdy chair, controlled movement"},
+            {"exercise_name": "Bodyweight Incline Knee Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Focus on full range of motion"},
+            {"exercise_name": "Ring Row", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use TRX straps or sturdy table; good form"},
+            {"exercise_name": "Side Plank Up Down", "sets": 2, "reps": "20-30s hold per side", "rest": 60, "notes": "From knees if needed"},
+            {"exercise_name": "Supermans", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Engage lower back and glutes"}
+          ],
+          "cardio": [
+            {"type": "Stationary Bike", "exercise_name": "Stationary Bike", "duration": "20-30 minutes", "notes": "Light to moderate resistance"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [{"notes": "Rest or Light Activity"}]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Bodyweight Squat", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Chair for support if needed"},
+            {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Wall or elevated surface; on knees if needed"},
+            {"exercise_name": "Band Pull Apart", "sets": 2, "reps": "15-20", "rest": 60, "notes": "Improve shoulder mobility and posture"},
+            {"exercise_name": "Bird Dog", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": "Engage core"},
+            {"exercise_name": "Glute Bridge", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Feet elevated if comfortable"}
+          ],
+          "cardio": [
+            {"type": "Water Aerobics", "duration": "30-40 minutes (if tolerated)", "notes": "Low impact; good for joints"}
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [{"notes": "Rest"}]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [{"notes": "Rest"}]
+        }
+      ],
+      "important_considerations": [
+        "Medical clearance essential",
+        "Gradual progression",
+        "Healthy diet",
+        "Modifications as needed",
+        "Consistency is key"
+      ]
+    },
+    "workout_plan_1_vi": {
       "training_split": "Toàn thân với Cardio",
       "goal": "Cải thiện sức khỏe tim mạch, sức mạnh, sự linh hoạt; xây dựng nền tảng",
       "training_level": "Người mới",

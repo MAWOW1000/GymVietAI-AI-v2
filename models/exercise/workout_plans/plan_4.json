@@ -1,6 +1,6 @@
 {
     "bmi_level": 4,
-    "workout_plan": {
+    "workout_plan_1": {
       "training_split": "Upper/Lower",
       "goal": "Balanced fitness (strength, hypertrophy, endurance)",
       "training_level": "Beginner/Intermediate",
@@ -75,7 +75,81 @@
       "Adequate rest"
       ]
     },
-    "workout_plan_vi": {
+    "workout_plan_2": {
+      "training_split": "Upper/Lower",
+      "goal": "Balanced fitness (strength, hypertrophy, endurance)",
+      "training_level": "Beginner/Intermediate",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Barbell Incline Bench Press", "sets": 3, "reps": "8-12", "rest": "60-90", "notes": "Focus on chest activation"},
+            {"exercise_name": "Dumbbell Row Unilateral", "sets": 3, "reps": "8-12 per side", "rest": "60-90", "notes": "Maintain a stable torso"},
+            {"exercise_name": "Dumbbell Arnold Press", "sets": 3, "reps": "8-12", "rest": "60-90", "notes": "Controlled movement"},
+            {"exercise_name": "Machine Pulldown", "sets": 3, "reps": "10-15", "rest": "60-90", "notes": "Squeeze shoulder blades"},
+            {"exercise_name": "Dumbbell Hammer Curl", "sets": 3, "reps": "10-15", "rest": 60, "notes": "Focus on the brachialis muscle"},
+            {"exercise_name": "Cable Rope Overhead Tricep Extension", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Keep elbows close to head"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [
+            {"exercise_name": "Barbell Front Squat Olympic", "sets": 3, "reps": "8-12", "rest": "90-120", "notes": "Maintain upright torso"},
+            {"exercise_name": "Barbell Romanian Deadlift", "sets": 2, "reps": "10-15", "rest": "90-120", "notes": "Focus on hip hinge; keep back straight"},
+            {"exercise_name": "Machine Horizontal Leg Press", "sets": 3, "reps": "10-15", "rest": 90, "notes": "Controlled movement"},
+            {"exercise_name": "Forwad Lunges", "sets": 2, "reps": "12-15 per leg", "rest": 90, "notes": "Focus on balance"},
+            {"exercise_name": "Dumbbell Leg Curl", "sets": 3, "reps": "12-15", "rest": 60, "notes": "Squeeze hamstrings at the top"},
+            {"exercise_name": "Machine Standing Calf Raises", "sets": 3, "reps": "15-20", "rest": 60, "notes": "Use a full range of motion"}
+          ]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"notes": "Rest or Active Recovery (light cardio, stretching, yoga)"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [
+            {"exercise_name": "Dumbbell Bench Press", "sets": 3, "reps": "12-15", "rest": "60-75", "notes": "Focus on the mind-muscle connection"},
+            {"exercise_name": "Dumbbell Row Unilateral", "sets": 3, "reps": "12-15 per side", "rest": "60-75", "notes": "Controlled movement"},
+            {"exercise_name": "Dumbbell Lateral Raise", "sets": 3, "reps": "12-15", "rest": "60-75", "notes": "Maintain steady pace"},
+            {"exercise_name": "Machine Reverse Fly", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Focus on rear deltoids"},
+            {"exercise_name": "Dumbbell Concentration Curl", "sets": 2, "reps": "15-20", "rest": 45, "notes": "Isolate the biceps"},
+            {"exercise_name": "Cable Rope Pushdown", "sets": 2, "reps": "15-20", "rest": 45, "notes": "Constant tension"}
+          ]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Bodyweight Squat", "sets": 3, "reps": "15-20", "rest": "60-75", "notes": "Warm-up or bodyweight squats"},
+            {"exercise_name": "Glute Bridge", "sets": 3, "reps": "15-20", "rest": "60-75", "notes": "Focus on glute activation"},
+            {"exercise_name": "Cable Hamstring Curl", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Use resistance band if available"},
+            {"exercise_name": "Leg Extension", "sets": 3, "reps": "15-20", "rest": 45, "notes": "Controlled movements"},
+            {"exercise_name": "Calf Raises", "sets": 3, "reps": "20-25", "rest": 45, "notes": ""}
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [
+            {"notes": "Rest"}
+          ]
+        }
+      ],
+      "important_considerations": [
+        "Balanced diet",
+        "Progressive overload",
+        "Proper form",
+        "Adequate rest"
+      ]
+    },
+    "workout_plan_1_vi": {
       "training_split": "Thân trên/Thân dưới",
       "goal": "Cân đối (sức mạnh, phát triển cơ, sức bền)",
       "training_level": "Người mới/Trung bình",
