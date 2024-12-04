@@ -1,6 +1,6 @@
 {
     "bmi_level": 7,
-    "workout_plan": {
+    "workout_plan_1": {
       "training_split": "Full Body",
       "goal": "Improve mobility, increase activity, enhance cardio",
       "training_level": "Beginner",
@@ -84,7 +84,81 @@
         "Listen to your body"
       ]
     },
-    "workout_plan_vi": {
+    "workout_plan_2": {
+      "training_split": "Full Body",
+      "goal": "Improve mobility, increase activity, enhance cardio",
+      "training_level": "Beginner",
+      "days": [
+        {
+          "day": "Day 1",
+          "exercises": [
+            {"exercise_name": "Seated Arm Stretch", "sets": 2, "reps": "30-60s hold", "rest": 60, "notes": "Gentle arm stretches while seated; improves range of motion"},
+            {"exercise_name": "Incline Push Up", "sets": 1, "reps": "AMRAP", "rest": 60, "notes": "On knees or against a wall for support"},
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "5-8", "rest": 60, "notes": "Use arms for assistance if needed"},
+            {"exercise_name": "Band Pull Apart", "sets": 1, "reps": "10-15", "rest": 60, "notes": "Focus on shoulder blade movement"},
+            {"exercise_name": "Bird Dog", "sets": 1, "reps": "5-8 per side", "rest": 60, "notes": "On knees for support if needed"},
+            {"exercise_name": "Glute Bridge", "sets": 1, "reps": "8-10", "rest": 60, "notes": "On the floor"}
+          ],
+          "cardio": [
+            {"type": "Water Aerobics", "duration": "20-30 minutes", "notes": "Highly recommended, low impact"},
+            {"type": "Treadmill Walk", "exercise_name": "Treadmill Walk", "duration": "10-15 minutes", "notes": "If water aerobics not available; very gentle pace"}
+          ]
+        },
+        {
+          "day": "Day 2",
+          "exercises": [{"notes": "Rest"}]
+        },
+        {
+          "day": "Day 3",
+          "exercises": [
+            {"exercise_name": "Seated Forward Bend", "sets": 2, "reps": "30-60s hold", "rest": 60, "notes": "Gentle stretch; bend knees if needed"},
+            {"exercise_name": "Seated Ulnar Nerve Slider", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Gentle arm slides; improve mobility"},
+            {"exercise_name": "Hamstring Bridge Isometric Open Angle", "sets": 1, "reps": "8-10", "rest": 60, "notes": "Modified bridge exercise; engage glutes"},
+            {"exercise_name": "Dumbbell Standing Hip Abduction", "sets": 1, "reps": "10-12 per side", "rest": 60, "notes": "Use chair for balance"},
+            {"exercise_name": "Treadmill Walk", "duration": "10-15 minutes", "notes": "Gentle pace, flat surface, intervals if needed"}
+          ],
+          "cardio": [
+            {"type": "Stationary Bike", "exercise_name": "Stationary Bike", "duration": "20-30 minutes", "notes": "Very light resistance"},
+            {"type": "Water Aerobics", "duration": "20-30 minutes", "notes": "If available, preferred over bike"}
+          ]
+        },
+        {
+          "day": "Day 4",
+          "exercises": [{"notes": "Rest"}]
+        },
+        {
+          "day": "Day 5",
+          "exercises": [
+            {"exercise_name": "Seated Arm Stretch", "sets": 2, "reps": "30-60s hold", "rest": 60, "notes": "Gentle arm stretches while seated; improves range of motion"},
+            {"exercise_name": "Incline Push Up", "sets": 1, "reps": "AMRAP", "rest": 60, "notes": "On knees or against a wall for support"},
+            {"exercise_name": "Chair Pose", "sets": 2, "reps": "5-8", "rest": 60, "notes": "Use arms for assistance if needed"},
+            {"exercise_name": "Band Pull Apart", "sets": 1, "reps": "10-15", "rest": 60, "notes": "Focus on shoulder blade movement"},
+            {"exercise_name": "Bird Dog", "sets": 1, "reps": "5-8 per side", "rest": 60, "notes": "On knees for support if needed"},
+            {"exercise_name": "Glute Bridge", "sets": 1, "reps": "8-10", "rest": 60, "notes": "On the floor"}
+          ],
+          "cardio": [
+            {"type": "Water Aerobics", "duration": "20-30 minutes", "notes": "Highly recommended, low impact"},
+            {"type": "Treadmill Walk", "exercise_name": "Treadmill Walk", "duration": "10-15 minutes", "notes": "If water aerobics not available; very gentle pace"}
+          ]
+        },
+        {
+          "day": "Day 6",
+          "exercises": [{"notes": "Rest"}]
+        },
+        {
+          "day": "Day 7",
+          "exercises": [{"notes": "Rest"}]
+        }
+      ],
+      "important_considerations": [
+        "Medical supervision highly recommended",
+        "Start slowly, prioritize comfort",
+        "Gradual progression",
+        "Healthy diet",
+        "Listen to your body"
+      ]
+    },
+    "workout_plan_1_vi": {
       "training_split": "Toàn thân",
       "goal": "Cải thiện sự linh hoạt, tăng cường hoạt động, tăng cường cardio",
       "training_level": "Người mới",

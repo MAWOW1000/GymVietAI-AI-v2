@@ -1,6 +1,6 @@
 {
     "bmi_level": 2,
-    "workout_plan": {
+    "workout_plan_1": {
       "training_split": "Full Body",
       "goal": "Build strength & muscle, increase fitness",
       "training_level": "Beginner",
@@ -70,7 +70,69 @@
         "Exercise variety"
       ]
     },
-    "workout_plan_vi": {
+    "workout_plan_2": {
+    "training_split": "Full Body",
+    "goal": "Build strength & muscle, increase fitness",
+    "training_level": "Beginner",
+    "days": [
+      {
+        "day": "Day 1",
+        "exercises": [
+          {"exercise_name": "Dumbbell Goblet Squat", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Use appropriate weight"},
+          {"exercise_name": "Dumbbell Incline Bench Press", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Focus on controlled movement"},
+          {"exercise_name": "Dumbbell Row Bilateral", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Maintain good posture"},
+          {"exercise_name": "Bodyweight Assisted Chin Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use assistance bands or chair; slow negative"},
+          {"exercise_name": "Hand Plank", "sets": 2, "reps": "Hold 30-45 seconds", "rest": 60, "notes": ""},
+          {"exercise_name": "Dumbbell Hammer Curl", "sets": 2, "reps": "10-15", "rest": 45, "notes": "Control weight, no swinging"}
+        ]
+      },
+      {
+        "day": "Day 2",
+        "exercises": [{"notes": "Rest or Light Activity"}]
+      },
+      {
+        "day": "Day 3",
+        "exercises": [
+          {"exercise_name": "Dumbbell Romanian Deadlifts", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Focus on hip hinge"},
+          {"exercise_name": "Dumbbell Arnold Press", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Controlled movement throughout"},
+          {"exercise_name": "Ring Row", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use rings or TRX straps"},
+          {"exercise_name": "Side Plank Up Down", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": ""},
+          {"exercise_name": "Reverse Crunch", "sets": 2, "reps": "12-15", "rest": 45, "notes": "Engage core, controlled movement"},
+          {"exercise_name": "Dumbbell Wrist Curl", "sets": 2, "reps": "15-20", "rest": 45, "notes": ""}
+        ]
+      },
+      {
+        "day": "Day 4",
+        "exercises": [{"notes": "Rest or Light Activity"}]
+      },
+      {
+        "day": "Day 5",
+        "exercises": [
+          {"exercise_name": "Dumbbell Goblet Squat", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Use appropriate weight"},
+          {"exercise_name": "Dumbbell Incline Bench Press", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Focus on controlled movement"},
+          {"exercise_name": "Dumbbell Row Bilateral", "sets": 2, "reps": "10-12", "rest": 60, "notes": "Maintain good posture"},
+          {"exercise_name": "Bodyweight Assisted Chin Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use assistance bands or chair; slow negative"},
+          {"exercise_name": "Hand Plank", "sets": 2, "reps": "Hold 30-45 seconds", "rest": 60, "notes": ""},
+          {"exercise_name": "Dumbbell Hammer Curl", "sets": 2, "reps": "10-15", "rest": 45, "notes": "Control weight, no swinging"}
+        ]
+      },
+      {
+        "day": "Day 6",
+        "exercises": [{"notes": "Rest"}]
+      },
+      {
+        "day": "Day 7",
+        "exercises": [{"notes": "Rest"}]
+      }
+    ],
+      "important_considerations": [
+        "Balanced diet with enough calories and protein",
+        "Progressive overload",
+        "Listen to your body",
+        "Exercise variety"
+      ]
+    },
+    "workout_plan_1_vi": {
       "training_split": "Toàn Thân",
       "goal": "Tăng cường sức mạnh và cơ bắp, tăng cường thể lực",
       "training_level": "Người mới",

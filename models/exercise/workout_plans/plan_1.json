@@ -1,6 +1,6 @@
 {
   "bmi_level": 1,
-  "workout_plan": {
+  "workout_plan_1": {
     "training_split": "Full Body",
     "goal": "Build foundation, gain muscle",
     "training_level": "Beginner",
@@ -70,7 +70,77 @@
       "Rest and recovery"
     ]
   },
-  "workout_plan_vi": {
+  "workout_plan_2": {
+    "training_split": "Full Body",
+    "goal": "Build foundation, improve mobility, bodyweight strength",
+    "training_level": "Beginner",
+    "days": [
+      {
+        "day": "Day 1",
+        "exercises": [
+          {"exercise_name": "Calf Raises", "sets": 3, "reps": "15-20", "rest": 60, "notes": "Focus on full range of motion"},
+          {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Hands elevated, on knees if needed"},
+          {"exercise_name": "Bodyweight Assisted Chin Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use resistance band or chair for assistance"},
+          {"exercise_name": "Ring Row", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use straps or sturdy table"},
+          {"exercise_name": "Bird Dog", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": "Engage core"},
+          {"exercise_name": "Glute Bridge", "sets": 2, "reps": "12-15", "rest": 60, "notes": "3-second hold at top"}
+        ]
+      },
+      {
+        "day": "Day 2",
+        "exercises": [
+          {"notes": "Rest or Light Activity (yoga, stretching)"}
+        ]
+      },
+      {
+        "day": "Day 3",
+        "exercises": [
+          {"exercise_name": "Jump Squats", "sets": 2, "reps": "8-10", "rest": 60, "notes": "Focus on controlled landings; only if comfortable"},
+          {"exercise_name": "Hands Up Push Ups", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Easier variation than standard push up"},
+          {"exercise_name": "Bodyweight Underhand Inverted Row", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use sturdy table, maintain straight body"},
+          {"exercise_name": "Dead Bug", "sets": 2, "reps": "10-12 per side", "rest": 60, "notes": "Engage core; slow, controlled"},
+          {"exercise_name": "Forward Lunges", "sets": 2, "reps": "10-12 per leg", "rest": 60, "notes": "Bodyweight only"},
+          {"exercise_name": "Hand Plank", "sets": 1, "reps": "Hold 30-60 seconds", "rest": 60, "notes": "Engage core; straight line"}
+        ]
+      },
+      {
+        "day": "Day 4",
+        "exercises": [
+          {"notes": "Rest or Light Activity (walking, gentle cardio)"}
+        ]
+      },
+      {
+        "day": "Day 5",
+        "exercises": [
+          {"exercise_name": "Calf Raises", "sets": 3, "reps": "15-20", "rest": 60, "notes": "Focus on full range of motion"},
+          {"exercise_name": "Incline Push Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Hands elevated, on knees if needed"},
+          {"exercise_name": "Bodyweight Assisted Chin Up", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use resistance band or chair for assistance"},
+          {"exercise_name": "Ring Row", "sets": 2, "reps": "AMRAP", "rest": 60, "notes": "Use straps or sturdy table"},
+          {"exercise_name": "Bird Dog", "sets": 2, "reps": "8-10 per side", "rest": 60, "notes": "Engage core"},
+          {"exercise_name": "Glute Bridge", "sets": 2, "reps": "12-15", "rest": 60, "notes": "3-second hold at top"}
+        ]
+      },
+      {
+        "day": "Day 6",
+        "exercises": [
+          {"notes": "Rest"}
+        ]
+      },
+      {
+        "day": "Day 7",
+        "exercises": [
+          {"notes": "Rest"}
+        ]
+      }
+    ],
+    "important_considerations": [
+      "Focus on nutrition for healthy weight gain.",
+      "Consult a healthcare professional before starting any new workout routine.",
+      "Progress gradually by increasing reps, sets, or difficulty as you feel stronger.",
+      "Prioritize rest and recovery for muscle growth."
+    ]
+  },
+  "workout_plan_1_vi": {
     "training_split": "Toàn thân",
     "goal": "Xây dựng nền tảng, tăng cơ",
     "training_level": "Người mới",
