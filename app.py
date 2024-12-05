@@ -1,92 +1,133 @@
 from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
-import json
 import os
 
 app = Flask(__name__)
 
-MODEL_DIR = "./models/exercise"
-WORKOUT_PLAN_DIR = './models/exercise/workout_plans'
+# --- Configuration ---
+MODELS_DIR = "./models"
+# ERROR_CODES = {
+#     1001: "Invalid input data",
+#     1002: "Model not found",
+#     500: "An unexpected error occurred",
+# }
 
-# Load the model
-models = {
-    "asia": joblib.load(os.path.join(MODEL_DIR, "random_forest_classifier_asian.pkl")),
-    "europe": joblib.load(os.path.join(MODEL_DIR, "random_forest_classifier_european.pkl")),
-}
-default_model = models["asian"]
+# --- Load models ---
+def load_workout_models():
+    try:
+        models = {
+            "asia": joblib.load(os.path.join(MODELS_DIR, "./exercise/random_forest_classifier_asian.pkl")),
+            "europe": joblib.load(os.path.join(MODELS_DIR, "./exercise/random_forest_classifier_european.pkl")),
+        }
+        default_model = models["asia"]
+    except FileNotFoundError as e:
+        print(f"Error loading model: {e}")
+        exit(1)
+    return models, default_model
 
-# Load workout plans from JSON files
-workout_plans = {}
-for filename in os.listdir(WORKOUT_PLAN_DIR):
-    if filename.endswith(".json"):
-        plan_number = int(filename.split("_")[1].split(".")[0])
-        with open(os.path.join(WORKOUT_PLAN_DIR, filename)) as f:
-            workout_plans[plan_number] = json.load(f)
+def load_nutrition_model():
+    try:
+        return joblib.load(os.path.join(MODELS_DIR, "./nutrition/random_forest_regressor.pkl"))
+    except FileNotFoundError as e:
+        print(f"Error loading nutrition model: {e}")
+        exit(1)
 
+wo_models, wo_default_model = load_workout_models()
+nutrition_model = load_nutrition_model()
 
+# --- Helper functions ---
+def validate_input(data, required_fields, data_types):
+    errors = []
+    for field in required_fields:
+        value = data.get(field)
+        if value in [None, "", "null"]:
+            errors.append(f"Missing required field: {field}")
+        elif field == "Gender":
+            try:
+                data[field] = str(value).strip().capitalize()
+                if data[field] not in ["Male", "Female"]:
+                    errors.append(f"Invalid value for {field}: Gender must be 'Male' or 'Female'")
+            except (ValueError, TypeError):
+                errors.append(f"Invalid data type for {field}: Expected {data_types[field].__name__}")
+        else:
+            try:
+                if field in ["Weight", "Height", "Age"]:
+                    data[field] = float(value) if field != "Age" else int(value)
+                else:
+                    data[field] = str(value).strip()
+            except (ValueError, TypeError):
+                errors.append(f"Invalid data type for {field}: Expected {data_types[field].__name__}")
+                
+    # Validate numeric fields          
+    for field in ["Weight", "Height", "Age"]:
+        value = data.get(field)
+        if isinstance(value, (int, float)) and value <= 0:
+            errors.append(f"{field} must be a positive number")
+        elif field in "Weight" and value > 300:
+            errors.append(f"{field} must be less than 300")
+        elif field == "Height" and value > 2.5:
+            errors.append(f"{field} must be less than or equal to 2.5 meters")
+        elif field == "Age" and value > 120:
+            errors.append(f"{field} must be less than 120")
+    return errors
+
+# --- API routes ---
 @app.route('/', methods=['GET'])
 def index():
-    return """Welcome to the Workout Plan Prediction API! Use the /api/workout-plan endpoint with a POST request.
-            Send a JSON object with the user's data to get a workout plan prediction.
-            e.g. {'Gender': Male, 'Weight': 70, 'Height': 1.70, 'Age': 25}"""
+    return """Welcome to the GymVietAI API! 
+    Use the /api/workout-plan endpoint with a POST request.
+    Send a JSON object with the user's data to get a workout plan prediction.
+    e.g. {'Gender': Male, 'Weight': 70, 'Height': 1.70, 'Age': 25}
+    
+    Use the /api/nutrition-plan endpoint with a POST request.
+    Send a JSON object with the user's data to get a nutrition plan prediction.
+    e.g. {'Weight': 70, 'Height': 1.70, 'Age': 25, 'Gender': Male, 'Goal': 'Loss Weight', 'ActivityLevel': 'Sedentary'}
+    """
 
 @app.route('/api/workout-plan', methods=['POST'])
 def predict():
+    data = request.get_json()
+    required_fields = ["Gender", "Weight", "Height", "Age", "continent"]
+    data_types = {
+        "Gender": str,
+        "Weight": float,
+        "Height": float,
+        "Age": int,
+        "continent": str,
+    }
+
+    # Validate input
+    errors = validate_input(data, required_fields, data_types)
+    if errors:
+        return jsonify({"EC": 1001, "EM": ", ".join(errors), "DT": []}), 400
+
+    # Predict
     try:
-        data = request.get_json()
-        
-        features = {
-            "Gender": str,
-            "Weight": float,
-            "Height": float,
-            "Age": int
-        }
-        
-        parsed_data = {}
-        errors = []
-        
-        # Check and validate the request data
-        if data is None:
-            return jsonify({"error": "Invalid data format. Please send a JSON object."}), 400
-        
-        for feature, dtype in features.items():
-            value = data.get(feature)
-            if value is None:
-                return jsonify({"error": f"Missing required field: {feature}"}), 400
-            elif value in [None, "", "null"]:
-                return jsonify({"error": f"Missing value found in field: {feature}"}), 400
-            else:
-                try:
-                    parsed_data[feature] = dtype(value)
-                    if feature in ["Weight", "Height", "Age"] and parsed_data[feature] <= 0:
-                        errors.append(f"{feature} must be a positive number.")
-                except ValueError:
-                    errors.append(f"{feature} must be of type {dtype.__name__}")
-        
-        if errors:
-            return jsonify({"error": f"Invalid data: {', '.join(errors)}"}), 400
-        
-        
-        continent = data.get("continent", "asian").lower()  # default continent is asian
-        model = models.get(continent, default_model)
-        
-        # separete the user profile data from the request
-        user_profile = {feature: data[feature] for feature in features if feature in data}
-        
-        
-        input_df = pd.DataFrame([user_profile])
-        prediction = model.predict(input_df)[0]
-        plan = workout_plans.get(prediction)
-
-        if plan is None:
-            return jsonify({"error": "No workout plan found for this prediction."}), 404
-        return jsonify(plan)
-    
-    
+        continent = data["continent"].lower()
+        model = wo_models.get(continent, wo_default_model)
+        input_df = pd.DataFrame([data])
+        prediction = int(model.predict(input_df)[0])
+        return jsonify({"EC": 0, "EM": "", "DT": [prediction]}), 200
+    except KeyError:
+        return jsonify({"EC": 1002, "EM": f"Model not found for continent: {data.get('continent')}", "DT": []}), 404
     except Exception as e:
-        return jsonify({"error": "An unexpected error occurred."}), 500
+        return jsonify({"EC": 500, "EM": f"An unexpected error occurred: {str(e)}", "DT": []}), 500
 
+@app.route('/api/nutrition-plan', methods=['POST'])
+def predict_nutrition():
+    data = request.get_json()
+    
+    features = {
+        "Weight": float,
+        "Height": float,
+        "Age": int,
+        "Gender": str,
+        "Goal": str,
+        "ActivityLevel": str
+    }
+    
+    return jsonify({"EC": 0, "EM": "Nutrition plan prediction is not implemented yet", "DT": []})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
