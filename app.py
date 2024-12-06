@@ -118,7 +118,8 @@ def predict():
 def predict_nutrition():
     data = request.get_json()
     
-    features = {
+    required_fields = ["Weight", "Height", "Age", "Gender", "Goal", "ActivityLevel"]
+    data_types = {
         "Weight": float,
         "Height": float,
         "Age": int,
