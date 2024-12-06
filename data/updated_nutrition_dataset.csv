@@ -1,4 +1,4 @@
-Weight,Height,BMI,Age,Gender,BMIcase,ActivityLevel,Goal,Calories,Protein,Carb,Fat,BMR
+Weight,Height,BMI,Age,Gender,BMIcase,ActivityLevel,Goal,calories,protein,carbs,fat,bmr
 92.0851902,1.760249514,29.71948799,59,Female,Obese,Moderately Active,Loss Weight,1941,146,194,65,1565.0078482500003
 61.08912444,1.595498708,23.99777555,25,Female,Overweight,Moderately Active,Loss Weight,1639,123,164,55,1322.0779369000002
 82.45403663,1.816538313,24.98749946,50,Female,Overweight,Lightly Active,Stay Fit,2130,133,266,59,1548.8768119249999
