@@ -59,11 +59,12 @@ def validate_input(data, required_fields, data_types):
                 errors.append(f"Invalid data type for {field}: Expected {data_types[field].__name__}")
         elif field == "ActivityLevel":
             try:
-                data[field] = str(value).strip().replace(" ", "").capitalize()
-                if data[field] not in ["Sedentary", "LightlyActive", "ModeratelyActive", "Active", "VeryActive"]:
-                    errors.append(f"Invalid value for {field}: ActivityLevel must be 'Sedentary', 'Lightly Active', 'Moderately Active', 'Active', or 'Very Active'")
+                data[field] = str(value).strip().title()
+                valid_activity_levels = ["Sedentary", "Lightly Active", "Moderately Active", "Active", "Very Active"]
+                if data[field] not in valid_activity_levels:
+                    errors.append(f"Invalid value for {field}: ActivityLevel must be one of {', '.join(valid_activity_levels)}")
             except (ValueError, TypeError):
-                errors.append(f"Invalid data type for {field}: Expected {data_types[field].__name__}")
+                errors.append(f"Invalid data type for {field}: Expected a string")
         else:
             try:
                 if field in ["Weight", "Height", "Age"]:
@@ -89,7 +90,7 @@ def validate_input(data, required_fields, data_types):
 # --- API routes ---
 @app.route('/', methods=['GET'])
 def index():
-    return """Welcome to the GymVietAI API! 
+    return """Welcome to the GymVietAI API!
     Use the /api/workout-plan endpoint with a POST request.
     Send a JSON object with the user's data to get a workout plan prediction.
     e.g. {'Gender': 'Male/Female', 'Weight': 70, 'Height': 1.70, 'Age': 25}
@@ -158,7 +159,6 @@ def predict_nutrition():
     except Exception as e:
         return jsonify({"EC": 500, "EM": f"An unexpected error occurred: {str(e)}", "DT": []}), 500
     
-    # return jsonify({"EC": 0, "EM": "Nutrition plan prediction is not implemented yet", "DT": []})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
