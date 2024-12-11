@@ -1,7 +1,9 @@
 import pandas as pd
 import numpy as np
-from typing import Dict, List, Tuple, Set
+import json
+from typing import Dict, List, Tuple, Set, Optional
 from dataclasses import dataclass
+from datetime import datetime, timedelta
 from enum import Enum
 
 class DietaryRestriction(Enum):
@@ -24,12 +26,71 @@ class Allergen(Enum):
     SESAME = "sesame"
 
 @dataclass
+class FoodItem:
+    food_name: str
+    portion_grams: float
+    calories: float
+    protein: float
+    carbs: float
+    fat: float
+    
+    def to_dict(self):
+        return {
+            'food_name': self.food_name,
+            'portion_grams': self.portion_grams,
+            'calories': self.calories,
+            'protein': self.protein,
+            'carbs': self.carbs,
+            'fat': self.fat
+        }
+    
+@dataclass
+class Meal:
+    meal_type: str
+    foods: List[FoodItem]
+    total_calories: float
+    total_protein: float
+    total_carbs: float
+    total_fat: float
+
+    def to_dict(self):
+        return {
+            'meal_type': self.meal_type,
+            'foods': [food.to_dict() for food in self.foods],
+            'total_calories': self.total_calories,
+            'total_protein': self.total_protein,
+            'total_carbs': self.total_carbs,
+            'total_fat': self.total_fat
+        }
+
+@dataclass
+class DailyPlan:
+    date: datetime
+    meals: Dict[str, Meal]
+    daily_totals: Dict[str, float]
+    
+    def to_dict(self):
+        return {
+            'date': self.date.isoformat(),
+            'meals': {meal_type: meal.to_dict() for meal_type, meal in self.meals.items()},
+            'daily_totals': self.daily_totals
+        }
+
+
+@dataclass
 class MealConstraints:
     """Defines nutritional constraints for a meal"""
     min_protein: float = 20.0
     max_fat: float = 25.0
     min_calories: float = 300.0
     macro_tolerance: float = 0.1  # 10% tolerance
+
+class DateTimeEncoder(json.JSONEncoder):
+    """Custom JSON encoder for datetime objects"""
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.isoformat()
+        return super().default(obj)
 
 class NutritionPlanner:
     # Define restricted food groups for each dietary restriction
@@ -424,6 +485,88 @@ class NutritionPlanner:
             
         return "\n".join(output)
     
+class NutritionPlanFormatter:
+    def __init__(self, nutrition_planner: NutritionPlanner):
+        self.planner = nutrition_planner
+        
+    def format_food_item(self, food_name: str, portion: float) -> FoodItem:
+        """Convert a food and its portion to a FoodItem object with calculated nutrients"""
+        food_data = self.planner.filtered_food_data[
+            self.planner.filtered_food_data['name'] == food_name
+        ].iloc[0]
+        
+        return FoodItem(
+            food_name=food_name,
+            portion_grams=round(portion, 2),
+            calories=round(food_data['calories'] * portion / 100, 2),
+            protein=round(food_data['protein'] * portion / 100, 2),
+            carbs=round(food_data['carbs'] * portion / 100, 2),
+            fat=round(food_data['fat'] * portion / 100, 2)
+        )
+    
+    def format_meal(self, meal_type: str, foods: List[Tuple[str, float]]) -> Meal:
+        """Convert a meal's foods into a Meal object with totals"""
+        food_items = [self.format_food_item(name, portion) for name, portion in foods]
+        
+        return Meal(
+            meal_type=meal_type,
+            foods=food_items,
+            total_calories=round(sum(item.calories for item in food_items), 2),
+            total_protein=round(sum(item.protein for item in food_items), 2),
+            total_carbs=round(sum(item.carbs for item in food_items), 2),
+            total_fat=round(sum(item.fat for item in food_items), 2)
+        )
+    
+    def format_daily_plan(self, day: str, plan: Dict[str, List[Tuple[str, float]]], 
+                         nutrition: Dict[str, float], date: Optional[datetime] = None) -> DailyPlan:
+        """Convert a daily plan into a DailyPlan object"""
+        if date is None:
+            # Map day string to next occurrence of that day
+            today = datetime.now()
+            day_map = {
+                'Monday': 0, 'Tuesday': 1, 'Wednesday': 2, 'Thursday': 3,
+                'Friday': 4, 'Saturday': 5, 'Sunday': 6
+            }
+            days_ahead = (day_map[day] - today.weekday()) % 7
+            date = today + timedelta(days=days_ahead)
+        
+        return DailyPlan(
+            date=date,
+            meals={
+                meal_type: self.format_meal(meal_type, foods)
+                for meal_type, foods in plan.items()
+            },
+            daily_totals=nutrition
+        )
+    
+    def format_weekly_plan(self, weekly_plan: Dict[str, Dict[str, List[Tuple[str, float]]]], 
+                          weekly_nutrition: Dict[str, Dict[str, float]]) -> Dict:
+        """Convert a weekly plan into a database-friendly format"""
+        start_date = datetime.now()
+        
+        formatted_plan = {
+            'plan_metadata': {
+                'generated_at': start_date.isoformat(),
+                'start_date': start_date.isoformat(),
+                'end_date': (start_date + timedelta(days=6)).isoformat(),
+                'dietary_restrictions': [r.value for r in self.planner.dietary_restrictions],
+                'allergens': [a.value for a in self.planner.allergens],
+                'macro_targets': self.planner.daily_targets
+            },
+            'daily_plans': {
+                day: self.format_daily_plan(day, plan, weekly_nutrition[day]).to_dict()
+                for day, plan in weekly_plan.items()
+            }
+        }
+        
+        return formatted_plan
+
+    def save_to_json(self, weekly_plan: Dict, weekly_nutrition: Dict, filename: str):
+        """Save the formatted weekly plan to a JSON file"""
+        formatted_data = self.format_weekly_plan(weekly_plan, weekly_nutrition)
+        
+        with open(filename, 'w') as f:
+            json.dump(formatted_data, f, indent=4, cls=DateTimeEncoder)
     
 # Load food data
 df = pd.read_csv('./data/food_dataset_new.csv')
@@ -443,4 +586,7 @@ weekly_plan = planner.generate_weekly_plan()
 weekly_nutrition = planner.calculate_weekly_nutrition(weekly_plan)
 
 # Print formatted plan
-print(planner.format_weekly_plan(weekly_plan, weekly_nutrition))
+# print(planner.format_weekly_plan(weekly_plan, weekly_nutrition))
+
+formatter = NutritionPlanFormatter(planner)
+formatter.save_to_json(weekly_plan, weekly_nutrition, 'weekly_nutrition_plan.json')
