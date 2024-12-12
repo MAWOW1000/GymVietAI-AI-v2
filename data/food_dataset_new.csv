@@ -114,25 +114,44 @@ pimento peppers,23.0,1.1,5.1,0.3,Vegetables
 peppers,27.67,0.95,6.57,0.2,Vegetables
 scotch,250.0,0.0,0.1,0.0,Vegetables
 shishito peppers,32.0,1.74,6.7,0.44,Vegetables
+seitan,126,25.0,5.3,0.6,Protein
 chicken breast,165.0,31.02,0.0,3.57,Protein
+chicken thigh,197.0,17,0.0,15.41,Protein
+chicken,213.0,17,0.1,15,Protein
+duck,404.0,11,0.0,39,Protein
+tuna,109.0,24.0,0.0,0.5,Protein
+veal,144.0,19.0,0.0,6.8,Protein
+pork,216.0,19,0.0,15,Protein
+fish,96.0,20.42,0.0,1.7,Protein
+tilapia,96.0,20.08,0.0,1.7,Protein
+sardines,208.0,25.45,0.0,11.45,Protein
+mackerel,205.0,18.8,0.0,14,Protein
+shrimp,71.0,14,0.9,1,Protein
+crab,87.0,17.6,0.0,1.2,Protein
+lobster,112.0,21.5,2.4,1.5,Protein
+mussels,86.0,12.0,3.7,2.2,Protein
+clams,86.0,15.0,3.6,1.3,Protein
+oysters,81.0,9.5,5,2.3,Protein
+cod,82.0,18.4,0.0,0.7,Protein
+lamb,267.0,17,0.0,22,Protein
 salmon,206.0,22.1,0.0,12.35,Protein
 beef,259.0,26.11,0.0,16.59,Protein
 turkey,189.0,28.55,0.06,7.39,Protein
 eggs,143.0,12.56,0.72,9.51,Protein
 tofu,83.0,9.98,1.18,5.26,Protein
-lentils,116.0,9.02,20.13,0.38,Protein
-beans,94.0,4.75,21.14,0.37,Protein
-chickpeas,164.0,8.86,27.42,2.59,Protein
-greek yogurt,59.0,10.19,3.6,0.39,Protein
-cottage cheese,98.0,11.12,3.38,4.3,Protein
-whey protein,352.0,78.13,6.25,1.56,Protein
-peanut butter,588.0,21.93,23.98,49.54,Protein
-almond butter,614.0,20.96,18.82,55.5,Protein
-cashew butter,609.0,12.12,30.3,53.03,Protein
+lentils,116.0,9.02,20.13,0.38,Grains
+beans,94.0,4.75,21.14,0.37,Grains
+chickpeas,164.0,8.86,27.42,2.59,Grains
+greek yogurt,59.0,10.19,3.6,0.39,Dairy
+cottage cheese,98.0,11.12,3.38,4.3,Dairy
+peanut butter,588.0,21.93,23.98,49.54,Healthy Fats
+almond butter,614.0,20.96,18.82,55.5,Healthy Fats
+cashew butter,609.0,12.12,30.3,53.03,Healthy Fats
 brown rice,112.0,2.32,23.51,0.83,Grains
 quinoa,120.0,4.4,21.3,1.92,Grains
 oats,379.0,13.15,67.7,6.52,Grains
 whole wheat bread,252.0,12.45,42.71,3.5,Grains
+wheat,329.0,13.85,68.09,1.9,Grains
 pasta,158.0,5.8,30.86,0.93,Grains
 corn,96.0,3.41,20.98,1.5,Grains
 barley,123.0,2.26,28.22,0.44,Grains
@@ -170,10 +189,12 @@ butter,717.0,0.85,0.06,81.11,Dairy
 cream,340.0,2.84,2.74,36.08,Dairy
 sour cream,198.0,2.44,4.63,19.35,Dairy
 ice cream,207.0,3.5,23.6,11.0,Dairy
+salmon,206.0,22.1,0.0,12.35,Healthy Fats
 olive oil,884.0,0.0,0.0,100.0,Healthy Fats
 avocado oil,884.0,0.0,0.0,100.0,Healthy Fats
 almonds,598.0,20.96,21.01,52.54,Healthy Fats
 walnuts,654.0,15.23,13.71,65.21,Healthy Fats
+peanuts,587.0,24,21,50,Healthy Fats
 chia seeds,486.0,16.54,42.12,30.74,Healthy Fats
 flax seeds,534.0,18.29,28.88,42.16,Healthy Fats
 dark chocolate,546.0,4.88,61.17,31.28,Healthy Fats

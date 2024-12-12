@@ -1,12 +1,13 @@
 # GymVietAI - AI-Driven Assistance Fitness Platform (Exercise Plan Prediction Feature/Nutrition Recommendations Feature)
 
-This repository contains the code for the AI microservice responsible for predicting personalized workout plans, and nutrition recommendations within the GymVietAI application.  It uses a machine learning model to recommend workout plans based on user inputs (gender, weight, height, and age).
+This repository contains the code for the AI microservice responsible for predicting personalized workout plans, nutrition recommendation within the GymVietAI application.  It uses a machine learning model to recommend workout plans based on user inputs (gender, weight, height, and age) and macro nutrients target based on user inputs.
 
 ## Features
 
-* **Machine Learning Model:**  Uses a trained Gradient Boosting Classifier model to predict the most suitable workout plan.
-* **API Endpoint:**  Provides a `/api/workout-plan` endpoint that accepts user data and returns the recommended workout plan in JSON format.
-* **Workout Plans:** Includes a set of predefined workout plans in JSON format, tailored for different fitness levels and goals.
+* **Machine Learning Model:**  Uses a trained Random Forest model to predict the most suitable workout plan (Classification Model) and macro nutrients prediction (Regression Model).
+* **API Endpoint:**  Provides a `/api/workout-plan` endpoint that accepts user data and returns the recommended workout plan (or in JSON format) and `/api/nutrition-plan` that returns the macro nutrients predict in a day for user. 
+* **Workout Plans:** The ID for the workout plan ( or includes a set of predefined workout plans in JSON format, tailored for different fitness levels and goals).
+* **Macro Nutrients Prediction:** Includes a list of macronutrient targets [calories, protein, carbs, fat].
 * **Microservice Architecture:** Designed to be integrated as a standalone microservice within a larger application ecosystem.
 
 ## API Usage
@@ -21,17 +22,48 @@ This repository contains the code for the AI microservice responsible for predic
 {
   "Gender": "Male",  // Or "Female"
   "Weight": 70,       // In kilograms
-  "Height": 1.75,      // In centimeters
+  "Height": 1.75,      // In meters
   "Age": 30
 }
 ```
 **Response (JSON):**
 ```
 {
-    "bmi_level": 7, // Example
-    "workout_plan": {
-        // ... workout plan details ...
-    }
+  "DT": [
+      4     // The classification of plan
+  ],
+  "EC": 0,  // Error code
+  "EM": ""  // Error message
+}
+```
+
+**Endpoint:** `/api/nutrition-plan`
+
+**Method:** `POST`
+
+**Request Body (JSON):**
+
+```json
+{
+  "Weight": "55",                 // in kg
+  "Height": "1.72",               // in meters
+  "Age": "23",
+  "Gender": "Male",               // Male or Female
+  "Goal": "Loss Weight",          // 'Loss Weight' or 'Stay Fit' or 'Muscle Gain'
+  "ActivityLevel": "Sedentary"    // 'Sedentary' or 'Lightly Active' or 'Moderately Active' or 'Active' or 'Very Active'
+}
+```
+**Response (JSON):**
+```
+{
+  "DT": [
+      1485.279079365079,      // calories
+      111.32302539682549,     // protein
+      148.52865238095245,     // carbs
+      49.53463809523812       // fat
+  ],
+  "EC": 0,
+  "EM": ""
 }
 ```
 
@@ -42,7 +74,7 @@ This repository contains the code for the AI microservice responsible for predic
 ## Installation and Setup
 1. Clone the Repository:
 ```
-git clone https://github.com/mintwann/GymVietAI-AI
+git clone https://github.com/mintwann/GymVietAI-AI.git
 ```
 
 2. Create and Activate a Virtual Environment:
@@ -65,4 +97,4 @@ cd GymVietAI-AI
 ```
 python app.py
 ```
-The API will then be running at localhost:5001
+The API will then be running at port `5001`

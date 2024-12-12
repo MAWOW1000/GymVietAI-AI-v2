@@ -51,6 +51,21 @@ def validate_input(data, required_fields, data_types):
                     errors.append(f"Invalid value for {field}: Gender must be 'Male' or 'Female'")
             except (ValueError, TypeError):
                 errors.append(f"Invalid data type for {field}: Expected {data_types[field].__name__}")
+        elif field == "Goal":
+            try:
+                data[field] = str(value)
+                if data[field] not in ["Loss Weight", "Stay Fit", "Muscle Gain"]:
+                    errors.append(f"Invalid value for {field}: Goal must be 'Loss Weight', 'Stay Fit', or 'Muscle Gain'")
+            except (ValueError, TypeError):
+                errors.append(f"Invalid data type for {field}: Expected {data_types[field].__name__}")
+        elif field == "ActivityLevel":
+            try:
+                data[field] = str(value).strip().title()
+                valid_activity_levels = ["Sedentary", "Lightly Active", "Moderately Active", "Active", "Very Active"]
+                if data[field] not in valid_activity_levels:
+                    errors.append(f"Invalid value for {field}: ActivityLevel must be one of {', '.join(valid_activity_levels)}")
+            except (ValueError, TypeError):
+                errors.append(f"Invalid data type for {field}: Expected a string")
         else:
             try:
                 if field in ["Weight", "Height", "Age"]:
@@ -76,14 +91,15 @@ def validate_input(data, required_fields, data_types):
 # --- API routes ---
 @app.route('/', methods=['GET'])
 def index():
-    return """Welcome to the GymVietAI API! 
+    return """Welcome to the GymVietAI API!
     Use the /api/workout-plan endpoint with a POST request.
     Send a JSON object with the user's data to get a workout plan prediction.
-    e.g. {'Gender': Male, 'Weight': 70, 'Height': 1.70, 'Age': 25}
+    e.g. {'Gender': 'Male/Female', 'Weight': 70, 'Height': 1.70, 'Age': 25}
     
     Use the /api/nutrition-plan endpoint with a POST request.
     Send a JSON object with the user's data to get a nutrition plan prediction.
-    e.g. {'Weight': 70, 'Height': 1.70, 'Age': 25, 'Gender': Male, 'Goal': 'Loss Weight', 'ActivityLevel': 'Sedentary'}
+    e.g. {'Weight': 70, 'Height': 1.70, 'Age': 25, 'Gender': 'Male/Female', 'Goal': 'Loss Weight/Stay Fit/Muscle Gain', 'ActivityLevel': 'Sedentary/Lightly Active/Moderately Active/Active/Very Active'}
+    Output will be a list of macronutrient targets [calories, protein, carbs, fat].
     """
 
 @app.route('/api/workout-plan', methods=['POST'])
@@ -118,8 +134,8 @@ def predict():
 @app.route('/api/nutrition-plan', methods=['POST'])
 def predict_nutrition():
     data = request.get_json()
-    
-    features = {
+    required_fields = ["Weight", "Height", "Age", "Gender", "Goal", "ActivityLevel"]
+    data_types = {
         "Weight": float,
         "Height": float,
         "Age": int,
@@ -128,7 +144,22 @@ def predict_nutrition():
         "ActivityLevel": str
     }
     
-    return jsonify({"EC": 0, "EM": "Nutrition plan prediction is not implemented yet", "DT": []})
+    # Validate input
+    errors = validate_input(data, required_fields, data_types)
+    if errors:
+        return jsonify({"EC": 1001, "EM": ", ".join(errors), "DT": []}), 400
+    
+    # Predict
+    try:
+        input_df = pd.DataFrame([data])
+        macro_targets = nutrition_model.predict(input_df)[0]
+        # recommendations = recommend_foods(macro_targets, food_df, scaler=scaler)
+        # meal_plan = create_meal_plan_v2(macro_targets, food_df, scaler=scaler)
+        macro_targets = macro_targets.tolist()
+        return jsonify({"EC": 0, "EM": "", "DT": macro_targets}), 200
+    except Exception as e:
+        return jsonify({"EC": 500, "EM": f"An unexpected error occurred: {str(e)}", "DT": []}), 500
+    
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
