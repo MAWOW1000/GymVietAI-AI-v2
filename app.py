@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
 import os
+from flask import Flask, request, jsonify
+from recommendation import NutritionPlanner, DietaryRestriction, Allergen, NutritionPlanFormatter
 
 app = Flask(__name__)
 
@@ -143,6 +144,10 @@ def predict_nutrition():
         "ActivityLevel": str
     }
     
+    # Get optional dietary preferences from request
+    dietary_restrictions = set(map(DietaryRestriction, data.get('restrictions', ['none'])))
+    allergens = set(map(Allergen, data.get('allergens', ['none'])))
+    
     # Validate input
     errors = validate_input(data, required_fields, data_types)
     if errors:
@@ -151,13 +156,52 @@ def predict_nutrition():
     # Predict
     try:
         input_df = pd.DataFrame([data])
-        macro_targets = nutrition_model.predict(input_df)[0]
-        # recommendations = recommend_foods(macro_targets, food_df, scaler=scaler)
-        # meal_plan = create_meal_plan_v2(macro_targets, food_df, scaler=scaler)
-        macro_targets = macro_targets.tolist()
-        return jsonify({"EC": 0, "EM": "", "DT": macro_targets}), 200
+        macro_predictions = nutrition_model.predict(input_df)[0]
+        
+        # Format macro targets for the planner
+        macro_targets = {
+            'calories': float(macro_predictions[0]),
+            'protein': float(macro_predictions[1]),
+            'carbs': float(macro_predictions[2]),
+            'fat': float(macro_predictions[3])
+        }
+        
+        food_df = pd.read_csv('./data/food_dataset_new.csv')
+        
+        # Create nutrition planner instance
+        planner = NutritionPlanner(
+            food_data=food_df,
+            macro_targets=macro_targets,
+            dietary_restrictions=dietary_restrictions,
+            allergens=allergens
+        )
+        
+        # Generate weekly plan
+        weekly_plan = planner.generate_weekly_plan()
+        weekly_nutrition = planner.calculate_weekly_nutrition(weekly_plan)
+        
+        # Format the plan
+        formatter = NutritionPlanFormatter(planner)
+        formatted_plan = formatter.format_weekly_plan(weekly_plan, weekly_nutrition)
+        
+        response_data = {
+            "macro_targets": macro_targets,
+            "weekly_plan": formatted_plan
+        }
+        
+        return jsonify({
+            "EC": 0,
+            "EM": "",
+            "DT": response_data
+        }), 200
+        
     except Exception as e:
-        return jsonify({"EC": 500, "EM": f"An unexpected error occurred: {str(e)}", "DT": []}), 500
+        return jsonify({
+            "EC": 500, 
+            "EM": f"An unexpected error occurred: {str(e)}", 
+            "DT": []
+        }), 500
+    
     
 
 if __name__ == '__main__':
