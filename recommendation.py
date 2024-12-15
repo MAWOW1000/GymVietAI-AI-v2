@@ -568,25 +568,25 @@ class NutritionPlanFormatter:
         with open(filename, 'w') as f:
             json.dump(formatted_data, f, indent=4, cls=DateTimeEncoder)
     
-# Load food data
-df = pd.read_csv('./data/food_dataset_new.csv')
+# # Load food data
+# df = pd.read_csv('./data/food_dataset_new.csv')
 
-macro_targets = {'calories': 2520, 'protein': 220, 'carbs': 283, 'fat': 56}
+# macro_targets = {'calories': 2520, 'protein': 220, 'carbs': 283, 'fat': 56}
 
-# Create planner instance
-planner = NutritionPlanner(
-    df,
-    macro_targets,
-    dietary_restrictions={DietaryRestriction.NONE},
-    allergens={Allergen.NONE}
-)
+# # Create planner instance
+# planner = NutritionPlanner(
+#     df,
+#     macro_targets,
+#     dietary_restrictions={DietaryRestriction.NONE},
+#     allergens={Allergen.NONE}
+# )
 
-# Generate weekly plan
-weekly_plan = planner.generate_weekly_plan()
-weekly_nutrition = planner.calculate_weekly_nutrition(weekly_plan)
+# # Generate weekly plan
+# weekly_plan = planner.generate_weekly_plan()
+# weekly_nutrition = planner.calculate_weekly_nutrition(weekly_plan)
 
-# Print formatted plan
-# print(planner.format_weekly_plan(weekly_plan, weekly_nutrition))
+# # Print formatted plan
+# # print(planner.format_weekly_plan(weekly_plan, weekly_nutrition))
 
-formatter = NutritionPlanFormatter(planner)
-formatter.save_to_json(weekly_plan, weekly_nutrition, 'weekly_nutrition_plan.json')
+# formatter = NutritionPlanFormatter(planner)
+# formatter.save_to_json(weekly_plan, weekly_nutrition, 'weekly_nutrition_plan.json')
