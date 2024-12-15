@@ -85,7 +85,7 @@ def validate_input(data, required_fields, data_types):
         elif field == "Height" and value > 2.5:
             errors.append(f"{field} must be less than or equal to 2.5 meters")
         elif field == "Age" and value > 120:
-            errors.append(f"{field} must be less than 120")
+            errors.append(f"{field} must be less than 120")           
     return errors
 
 # --- API routes ---
@@ -134,14 +134,16 @@ def predict():
 @app.route('/api/nutrition-plan', methods=['POST'])
 def predict_nutrition():
     data = request.get_json()
-    required_fields = ["Weight", "Height", "Age", "Gender", "Goal", "ActivityLevel"]
+    required_fields = ["Weight", "Height", "Age", "Gender", "Goal", "ActivityLevel", "restrictions", "allergens"]
     data_types = {
         "Weight": float,
         "Height": float,
         "Age": int,
         "Gender": str,
         "Goal": str,
-        "ActivityLevel": str
+        "ActivityLevel": str,
+        "restrictions": list,
+        "allergens": list
     }
     
     # Get optional dietary preferences from request
