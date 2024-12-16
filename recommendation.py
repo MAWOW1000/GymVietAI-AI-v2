@@ -589,4 +589,4 @@ weekly_nutrition = planner.calculate_weekly_nutrition(weekly_plan)
 # print(planner.format_weekly_plan(weekly_plan, weekly_nutrition))
 
 formatter = NutritionPlanFormatter(planner)
-formatter.save_to_json(weekly_plan, weekly_nutrition, 'weekly_nutrition_plan.json')
+# formatter.save_to_json(weekly_plan, weekly_nutrition, 'weekly_nutrition_plan.json')

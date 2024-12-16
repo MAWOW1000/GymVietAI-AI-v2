@@ -3,6 +3,7 @@ import joblib
 import pandas as pd
 import os
 import numpy as np
+from recommendation import NutritionPlanner, NutritionPlanFormatter, DietaryRestriction, Allergen
 
 app = Flask(__name__)
 
@@ -42,7 +43,7 @@ def validate_input(data, required_fields, data_types):
     errors = []
     for field in required_fields:
         value = data.get(field)
-        if value in [None, "", "null"]:
+        if value in [None, "", "null"] and field not in ["DietaryRestrictions", "Allergens"]:
             errors.append(f"Missing required field: {field}")
         elif field == "Gender":
             try:
@@ -66,6 +67,9 @@ def validate_input(data, required_fields, data_types):
                     errors.append(f"Invalid value for {field}: ActivityLevel must be one of {', '.join(valid_activity_levels)}")
             except (ValueError, TypeError):
                 errors.append(f"Invalid data type for {field}: Expected a string")
+        elif field in ["DietaryRestrictions", "Allergens"]:
+            if value is not None and not isinstance(value, list):
+                errors.append(f"Invalid data type for {field}: Expected a list")
         else:
             try:
                 if field in ["Weight", "Height", "Age"]:
@@ -134,14 +138,16 @@ def predict():
 @app.route('/api/nutrition-plan', methods=['POST'])
 def predict_nutrition():
     data = request.get_json()
-    required_fields = ["Weight", "Height", "Age", "Gender", "Goal", "ActivityLevel"]
+    required_fields = ["Weight", "Height", "Age", "Gender", "Goal", "ActivityLevel", "DietaryRestrictions", "Allergens"]
     data_types = {
         "Weight": float,
         "Height": float,
         "Age": int,
         "Gender": str,
         "Goal": str,
-        "ActivityLevel": str
+        "ActivityLevel": str,
+        "DietaryRestrictions": list,
+        "Allergens": list
     }
     
     # Validate input
@@ -149,14 +155,62 @@ def predict_nutrition():
     if errors:
         return jsonify({"EC": 1001, "EM": ", ".join(errors), "DT": []}), 400
     
+    # Validate and convert dietary restrictions
+    try:
+        dietary_restrictions = {DietaryRestriction[r.upper()] for r in data.get("DietaryRestrictions", [])}
+        if not dietary_restrictions:
+            dietary_restrictions = {DietaryRestriction.NONE}
+    except KeyError as e:
+        return jsonify({
+            "EC": 1001, 
+            "EM": f"Invalid dietary restriction. Valid values are: {[r.name for r in DietaryRestriction]}", 
+            "DT": []
+        }), 400
+        
+    # Validate and convert allergens
+    try:
+        allergens = {Allergen[a.upper()] for a in data.get("Allergens", [])}
+        if not allergens:
+            allergens = {Allergen.NONE}
+    except KeyError as e:
+        return jsonify({
+            "EC": 1001, 
+            "EM": f"Invalid allergen. Valid values are: {[a.name for a in Allergen]}", 
+            "DT": []
+        }), 400
+    
     # Predict
     try:
         input_df = pd.DataFrame([data])
         macro_targets = nutrition_model.predict(input_df)[0]
-        # recommendations = recommend_foods(macro_targets, food_df, scaler=scaler)
-        # meal_plan = create_meal_plan_v2(macro_targets, food_df, scaler=scaler)
-        macro_targets = macro_targets.tolist()
-        return jsonify({"EC": 0, "EM": "", "DT": macro_targets}), 200
+        macro_targets = {
+            'calories': float(macro_targets[0]),
+            'protein': float(macro_targets[1]),
+            'carbs': float(macro_targets[2]),
+            'fat': float(macro_targets[3])
+        }
+        
+        # Load food data
+        df = pd.read_csv('./data/food_dataset_new.csv')
+        
+        # Create planner instance with dietary restrictions and allergens
+        planner = NutritionPlanner(
+            df,
+            macro_targets,
+            dietary_restrictions=dietary_restrictions,
+            allergens=allergens
+        )
+        
+        # Generate weekly plan
+        weekly_plan = planner.generate_weekly_plan()
+        weekly_nutrition = planner.calculate_weekly_nutrition(weekly_plan)
+        
+        # Format the plan
+        formatter = NutritionPlanFormatter(planner)
+        formatted_plan = formatter.format_weekly_plan(weekly_plan, weekly_nutrition)
+        
+        # Return the formatted plan directly as DT
+        return jsonify({"EC": 0, "EM": "", "DT": formatted_plan}), 200
     except Exception as e:
         return jsonify({"EC": 500, "EM": f"An unexpected error occurred: {str(e)}", "DT": []}), 500
     
