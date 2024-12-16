@@ -138,6 +138,111 @@ class NutritionPlanner:
         }
     }
 
+    PORTION_GUIDELINES = {
+    'default': {'min': 50, 'max': 300},  # Default for most foods
+    'Fruits': {'min': 100, 'max': 200},
+    'Vegetables': {'min': 75, 'max': 250},
+    'Protein': {'min': 85, 'max': 170},  # Standard protein serving in grams following WHO guidelines
+    'Dairy': {'min': 30, 'max': 250},
+    'Grains': {'min': 50, 'max': 150},
+    'Healthy Fats': {'min': 15, 'max': 30},  # Nuts, seeds, oils in grams
+    'oils': {'min': 5, 'max': 15},
+    'allium': {'min': 10, 'max': 30},  # Garlic, onion, leeks in grams
+    'peppers': {'min': 10, 'max': 30},
+    'beverages': {'min': 200, 'max': 500},  # Beverages in ml
+}
+
+    FOOD_CATEGORIES = {
+    'Fruits': {
+        'fresh_fruits': {
+            'apple', 'banana', 'orange', 'grapefruit', 'strawberries', 'blueberries',
+            'raspberries', 'mango', 'pineapple', 'kiwi', 'watermelon', 'peach',
+            'pear', 'plum', 'cherries', 'grapes', 'pomegranate', 'cantaloupe',
+            'honeydew melon', 'papaya', 'dragon fruit', 'tangerine', 'clementine'
+        },
+        'dried_fruits': {
+            'dates', 'prunes', 'raisins', 'apricots', 'cranberries', 'goji berries',
+            'currants'
+        },
+        'tropical_fruits': {
+            'coconut', 'guava', 'passion fruit', 'lychee', 'durian', 'jackfruit',
+            'breadfruit', 'rambutan', 'soursop'
+        }
+    },
+    'Vegetables': {
+        'leafy_greens': {
+            'spinach', 'kale', 'lettuce', 'cabbage', 'brussels sprouts'
+        },
+        'cruciferous': {
+            'broccoli', 'cauliflower', 'cabbage', 'brussels sprouts'
+        },
+        'root_vegetables': {
+            'carrots', 'sweet potato', 'beets', 'radishes', 'turnips',
+            'parsnips', 'rutabaga'
+        },
+        'nightshades': {
+            'tomatoes', 'bell peppers', 'eggplant', 'potatoes'
+        },
+    },
+    'allium': {
+        'onion', 'garlic', 'leeks'
+    },
+    'peppers': {
+        'bell peppers', 'chili peppers', 'jalapenos', 'habanero',
+        'poblano peppers', 'serrano peppers', 'shishito peppers'
+    },
+    'Protein': {
+        'poultry': {
+            'chicken breast', 'chicken thigh', 'chicken', 'turkey', 'duck'
+        },
+        'seafood': {
+            'tuna', 'salmon', 'tilapia', 'sardines', 'mackerel', 'shrimp',
+            'crab', 'lobster', 'mussels', 'clams', 'oysters', 'cod'
+        },
+        'meat': {
+            'beef', 'pork', 'lamb', 'veal'
+        },
+        'plant_based': {
+            'tofu', 'seitan'
+        }
+    },
+    'Dairy': {
+        'milk_and_yogurt': {
+            'milk', 'yogurt', 'greek yogurt'
+        },
+        'cheese': {
+            'cheese', 'cottage cheese'
+        },
+        'other_dairy': {
+            'butter', 'cream', 'sour cream', 'ice cream'
+        }
+    },
+    'Grains': {
+        'whole_grains': {
+            'brown rice', 'quinoa', 'oats', 'barley', 'bulgur', 'millet',
+            'farro', 'sorghum', 'teff', 'amaranth', 'buckwheat', 'wild rice'
+        },
+        'legumes': {
+            'lentils', 'beans', 'chickpeas'
+        },
+        'processed_grains': {
+            'pasta', 'bread', 'cereal', 'crackers', 'pretzels', 'tortillas'
+        }
+    },
+    'oils': {
+        'olive oil', 'avocado oil', 'coconut oil'
+    },
+    'Healthy Fats': {
+        'nuts_and_seeds': {
+            'almonds', 'walnuts', 'peanuts', 'chia seeds', 'flax seeds',
+            'pumpkin seeds'
+        },
+        'nut_butters': {
+            'peanut butter', 'almond butter', 'cashew butter'
+        }
+    }
+}
+    
     def __init__(self, food_data: pd.DataFrame, macro_targets: Dict[str, float], 
                  dietary_restrictions: Set[DietaryRestriction] = None,
                  allergens: Set[Allergen] = None):
@@ -217,9 +322,7 @@ class NutritionPlanner:
                 filtered_data = pd.concat([filtered_data, protein_foods]).drop_duplicates()
         
         return filtered_data
-    
-    
-        
+     
     def calculate_meal_targets(self, meal_type: str) -> Dict[str, float]:
         """Calculate macro targets for a specific meal based on daily distribution"""
         ratio = self.meal_distribution[meal_type]
@@ -230,40 +333,60 @@ class NutritionPlanner:
             'fat': self.daily_targets['fat'] * ratio
         }
     
+    def _get_food_category(self, food_name: str) -> str:
+        """Determine the category of a food item for portion sizing"""
+        food_name_lower = food_name.lower()
+        
+        for category, foods in self.FOOD_CATEGORIES.items():
+            if any(food in food_name_lower for food in foods):
+                return category
+        return 'default'
+    
+    
     def calculate_portion_size(self, food: pd.Series, remaining_targets: Dict[str, float]) -> float:
         """
-        Calculate optimal portion size based on all macro targets
+        Calculate optimal portion size based on all macro targets with realistic constraints
         """
+        food_category = self._get_food_category(food['name'])
+        portion_limits = self.PORTION_GUIDELINES[food_category]
+        min_portion = portion_limits['min']
+        max_portion = portion_limits['max']
+        
         portions = []
         target_calories = remaining_targets['calories']
         
         # Calculate portion needed for calories first as primary constraint
         if food['calories'] > 0:
             calorie_portion = (target_calories / food['calories']) * 100
-            portions.append(min(calorie_portion, 300))  # Cap at 300g
+            portions.append(calorie_portion)
         
         # Calculate portions needed for other macros
         for macro in ['protein', 'carbs', 'fat']:
             if food[macro] > 0 and remaining_targets[macro] > 0:
                 macro_portion = (remaining_targets[macro] / food[macro]) * 100
-                portions.append(min(macro_portion, 300))  # Cap at 300g
+                portions.append(macro_portion)
         
         # Get the balanced portion that satisfies most constraints
-        optimal_portion = np.median(portions) if portions else 100
+        if portions:
+            # Use median to avoid extreme values
+            optimal_portion = np.median(portions)
+            
+            # Apply minimum and maximum constraints
+            portion = max(min(optimal_portion, max_portion), min_portion)
+            
+            # Adjust portion if it would exceed calorie target significantly
+            calorie_contribution = (food['calories'] * portion / 100)
+            if calorie_contribution > target_calories * 1.1:  # More than 10% over target
+                portion = max(min_portion, min(max_portion, 
+                    (target_calories / food['calories']) * 100))
+            
+            return round(portion)
         
-        # Apply minimum and maximum constraints
-        portion = max(min(optimal_portion, 300), 30)  # Between 30g and 300g
-        
-        # Adjust portion if it would exceed calorie target significantly
-        calorie_contribution = (food['calories'] * portion / 100)
-        if calorie_contribution > target_calories * 1.1:  # More than 10% over target
-            portion = (target_calories / food['calories']) * 100
-        
-        return round(portion)
+        return min_portion
     
     def select_foods_for_meal(self, meal_type: str, constraints: MealConstraints) -> List[Tuple[str, float]]:
         """
-        Select foods and their portions for a meal with improved macro adherence
+        Select foods and their portions for a meal with improved macro adherence and realistic portions
         """
         meal_targets = self.calculate_meal_targets(meal_type)
         selected_foods = []
@@ -272,6 +395,7 @@ class NutritionPlanner:
         min_calories = meal_targets['calories'] * 0.95  # 5% lower than target
         max_calories = meal_targets['calories'] * 1.05  # 5% higher than target
         
+        # Updated meal priorities with more specific portion guidance
         meal_priorities = {
             'breakfast': ['Grains', 'Dairy', 'Fruits'],
             'lunch': ['Protein', 'Vegetables', 'Grains'],
@@ -280,12 +404,14 @@ class NutritionPlanner:
         }
         
         current_calories = 0
-    
+        
         for food_group in meal_priorities[meal_type]:
             if current_calories >= max_calories:
                 break
                 
-            group_foods = self.filtered_food_data[self.filtered_food_data['food_group'] == food_group]
+            group_foods = self.filtered_food_data[
+                self.filtered_food_data['food_group'] == food_group
+            ]
             
             if len(group_foods) == 0:
                 continue
@@ -297,15 +423,26 @@ class NutritionPlanner:
             # Select food with best macro ratio
             food = group_foods.sample(1).iloc[0]
             
-            # Calculate portion based on remaining targets
+            # Calculate portion with realistic constraints
             portion = self.calculate_portion_size(food, remaining_targets)
+            
+            # Skip if portion is too small to be realistic
+            if portion < self.PORTION_GUIDELINES['default']['min']:
+                continue
             
             # Check if adding this food would exceed max calories
             food_calories = food['calories'] * portion / 100
             if current_calories + food_calories > max_calories:
-                # Adjust portion to fit within calorie limit
+                # Adjust portion to fit within calorie limit while maintaining minimum portion
                 remaining_calories = max_calories - current_calories
-                portion = (remaining_calories / food['calories']) * 100
+                adjusted_portion = max(
+                    self.PORTION_GUIDELINES[self._get_food_category(food['name'])]['min'],
+                    (remaining_calories / food['calories']) * 100
+                )
+                if adjusted_portion >= self.PORTION_GUIDELINES[self._get_food_category(food['name'])]['min']:
+                    portion = adjusted_portion
+                else:
+                    continue
             
             if portion > 0:
                 selected_foods.append((food['name'], portion))
@@ -315,11 +452,6 @@ class NutritionPlanner:
                 for macro in remaining_targets:
                     remaining_targets[macro] -= (food[macro] * portion / 100)
                     remaining_targets[macro] = max(0, remaining_targets[macro])
-        
-        # If we're under minimum calories, adjust portions up
-        if current_calories < min_calories and selected_foods:
-            scale_factor = min_calories / current_calories
-            selected_foods = [(name, portion * scale_factor) for name, portion in selected_foods]
         
         return selected_foods
     
