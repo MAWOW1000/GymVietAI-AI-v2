@@ -189,7 +189,7 @@ class NutritionPlanner:
     },
     'peppers': {
         'bell peppers', 'chili peppers', 'jalapenos', 'habanero',
-        'poblano peppers', 'serrano peppers', 'shishito peppers'
+        'poblano peppers', 'serrano peppers', 'shishito peppers', 'peppers'
     },
     'Protein': {
         'poultry': {
