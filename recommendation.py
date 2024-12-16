@@ -150,7 +150,7 @@ class NutritionPlanner:
     'allium': {'min': 10, 'max': 30},  # Garlic, onion, leeks in grams
     'peppers': {'min': 10, 'max': 30},
     'beverages': {'min': 200, 'max': 500},  # Beverages in ml
-}
+    }
 
     FOOD_CATEGORIES = {
     'Fruits': {
@@ -241,7 +241,7 @@ class NutritionPlanner:
             'peanut butter', 'almond butter', 'cashew butter'
         }
     }
-}
+    }
     
     def __init__(self, food_data: pd.DataFrame, macro_targets: Dict[str, float], 
                  dietary_restrictions: Set[DietaryRestriction] = None,
