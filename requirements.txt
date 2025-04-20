@@ -5,8 +5,3 @@ seaborn
 flask
 scikit-learn
 joblib
-torch
-torchvision
-opencv-python-headless
-Pillow
-albumentations
