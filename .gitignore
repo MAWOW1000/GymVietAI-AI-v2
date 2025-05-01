@@ -10,3 +10,4 @@ Scripts/
 static/
 share/
 pyvenv.cfg
+data/image_test/
