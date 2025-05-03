@@ -7,4 +7,7 @@ build/
 dist/
 Lib/
 Scripts/
+static/
+share/
 pyvenv.cfg
+data/image_test/
