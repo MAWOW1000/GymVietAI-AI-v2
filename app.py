@@ -1,31 +1,56 @@
 import joblib
 import pandas as pd
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, url_for
+import json
+import numpy as np
 from recommendation import NutritionPlanner, DietaryRestriction, Allergen, NutritionPlanFormatter
 import cv2
-import numpy as np
 import torch
 import time
+import uuid
 try:
-    from posture_analyzer import load_trained_model, get_validation_transform, predict_squat_posture
+    from posture_analyzer import load_trained_model, get_validation_transform, predict_squat_posture, analyze_squat_errors
 except ImportError:
-    print("Error: Could not import from posture_analyzer. Check file location and imports.")
+    print("FATAL ERROR: Could not import from posture_analyzer. Check file location and imports.")
     load_trained_model = lambda path, device: None
     get_validation_transform = lambda: None
     predict_squat_posture = lambda frame, model, transform, device: {'error': 'Module not loaded'}
+    analyze_squat_errors = lambda frame: ['MODULE_LOAD_ERROR']
+
+class NumpyEncoder(json.JSONEncoder):
+    """Custom JSON encoder for NumPy data types."""
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        if isinstance(obj, np.int64):
+            return int(obj)
+        if isinstance(obj, np.float64):
+            return float(obj)
+        if isinstance(obj, np.bool_):
+            return bool(obj)
+        return super(NumpyEncoder, self).default(obj)
 
 app = Flask(__name__)
+app.json_encoder = NumpyEncoder
 
 # --- Configuration ---
 MODELS_DIR = "./models"
-UPLOAD_FOLDER = 'uploads' # temporary folder to save uploaded files
+UPLOAD_FOLDER = 'uploads'
+STATIC_FOLDER = 'static'
+ERROR_FRAMES_SUBDIR = 'error_frames'
+ERROR_FRAMES_FOLDER = os.path.join(STATIC_FOLDER, ERROR_FRAMES_SUBDIR)
 POSTURE_MODEL_PATH = os.path.join(MODELS_DIR, 'posture', 'squat_baseline_cnn_model.pth')
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+ALLOWED_EXTENSIONS = {'mp4', 'mov', 'avi', 'mkv'}
 
 # Ensure the models directory exists
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
+if not os.path.exists(UPLOAD_FOLDER): os.makedirs(UPLOAD_FOLDER)
+if not os.path.exists(ERROR_FRAMES_FOLDER): os.makedirs(ERROR_FRAMES_FOLDER)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # ERROR_CODES = {
@@ -119,6 +144,9 @@ def validate_input(data, required_fields, data_types):
         elif field == "Age" and value > 120:
             errors.append(f"{field} must be less than 120")           
     return errors
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # --- API routes ---
 @app.route('/', methods=['GET'])
@@ -239,11 +267,8 @@ def predict_nutrition():
 @app.route('/api/squat', methods=['POST'])
 def predict_squat_posture_api():
     """
-    API endpoint to predict squat posture ("Correct" or "Incorrect") from an uploaded video.
-    Includes an overall confidence score in the response.
-    Expects a POST request with a 'video' file part.
-    Samples 3 frames (25%, 50%, 75%) and aggregates predictions.
-    Returns a JSON response with standard EC, EM, DT format.
+    API endpoint to predict squat posture and identify specific errors from video.
+    Returns overall prediction, confidence, and detailed errors including URLs to error frames.
     """
     # Standard Error Codes
     EC_SUCCESS = 0
@@ -252,110 +277,145 @@ def predict_squat_posture_api():
     EC_INVALID_FILE_TYPE = 4003
     EC_MODEL_UNAVAILABLE = 5031
     EC_VIDEO_PROCESSING_ERROR = 5001
-    EC_PREDICTION_ERROR = 5002
     EC_UNKNOWN = 5000
 
-    # Check if the posture assessment model was loaded successfully
+    # Constants
+    NUM_FRAMES_TO_SAMPLE = 20
+
+    # Check if model is loaded
     if squat_model is None or squat_validation_transform is None:
          return jsonify({'EC': EC_MODEL_UNAVAILABLE, 'EM': 'Posture assessment model is not available.', 'DT': None}), 503
 
-    # 1. Validate video file presence in the request
+    # 1. Validate request
     if 'video' not in request.files:
         return jsonify({'EC': EC_NO_FILE_PART, 'EM': 'No video file part in the request', 'DT': None}), 400
-
     file = request.files['video']
     if file.filename == '':
         return jsonify({'EC': EC_NO_FILE_SELECTED, 'EM': 'No selected video file', 'DT': None}), 400
+    if not allowed_file(file.filename):
+        return jsonify({'EC': EC_INVALID_FILE_TYPE, 'EM': f"Invalid video file type. Allowed types: {', '.join(ALLOWED_EXTENSIONS)}", 'DT': None}), 400
 
-    # 2. Save the uploaded video file temporarily
+    # 2. Save temporary video file with unique name
     video_path = ""
+    unique_id = str(uuid.uuid4()) # Generate unique ID for this request
+    original_filename, original_ext = os.path.splitext(file.filename)
+    video_filename = f"{unique_id}{original_ext}"
+    video_path = os.path.join(app.config['UPLOAD_FOLDER'], video_filename)
+
     try:
-        video_filename = file.filename
-        video_path = os.path.join(app.config['UPLOAD_FOLDER'], video_filename)
         file.save(video_path)
         print(f"Video saved temporarily to: {video_path}")
 
-        frame_predictions = [] # Stores "Correct"/"Incorrect" strings
-        frame_confidences = [] # Stores confidence_incorrect floats
-        final_prediction = "Correct"
-        overall_confidence = None # Initialize overall confidence
-        error_message = ""
-        frame_analysis_details = []
-        processing_error_occurred = False
+        # --- Variables for results ---
+        cnn_frame_predictions = {}
+        all_confidences_incorrect = []
+        incorrect_frame_indices = []
+        detected_errors_details = [] # List of dicts: {'frame_index': idx, 'errors': ['KIE'], 'error_frame_url': url}
+        processing_error_message = ""
+        final_overall_prediction = "Correct"
+        overall_confidence = None
 
-        # 3. Process the video and perform prediction on sampled frames
+        # 3. Process video: Sample frames and run CNN
         cap = cv2.VideoCapture(video_path)
-        if not cap.isOpened():
-            raise ValueError(f"Cannot open video file: {video_path}")
+        if not cap.isOpened(): raise ValueError(f"Cannot open video file: {video_path}")
 
         total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        if total_frames < 3:
-             raise ValueError("Video too short to sample 3 frames")
+        if total_frames < 3: # Need at least a few frames
+             print(f"Warning: Video has only {total_frames} frames. Sampling available frames.")
+             frame_indices = list(range(total_frames)) if total_frames > 0 else []
+        elif total_frames < NUM_FRAMES_TO_SAMPLE:
+            print(f"Warning: Video shorter than {NUM_FRAMES_TO_SAMPLE} frames. Sampling all available frames.")
+            frame_indices = list(range(total_frames))
+        else:
+            frame_indices = np.linspace(0, total_frames - 1, NUM_FRAMES_TO_SAMPLE, dtype=int)
 
-        frame_indices = [
-            max(0, int(total_frames * 0.25) - 1),
-            max(0, int(total_frames * 0.50) - 1),
-            max(0, int(total_frames * 0.75) - 1)
-        ]
-        frame_indices = sorted(list(set(frame_indices)))
-        print(f"Total frames: {total_frames}, Sampling indices: {frame_indices}")
+        if not frame_indices.size > 0: # Check if frame_indices is not empty
+             raise ValueError("Could not determine frames to sample.")
 
-        for i, frame_index in enumerate(frame_indices):
+        print(f"Total frames: {total_frames}, Sampling {len(frame_indices)} indices: {frame_indices.tolist()}")
+
+        for frame_index in frame_indices:
             cap.set(cv2.CAP_PROP_POS_FRAMES, frame_index)
             ret, frame = cap.read()
             if ret:
-                print(f"Processing frame {i+1} at index {frame_index}...")
+                print(f"Processing frame at index {frame_index} (CNN)...")
                 frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                result = predict_squat_posture(frame_rgb, squat_model, squat_validation_transform, DEVICE)
+                cnn_result = predict_squat_posture(frame_rgb, squat_model, squat_validation_transform, DEVICE)
 
-                frame_detail = {'frame_index': frame_index}
-                if result['error']:
-                    print(f"Error predicting frame {i+1}: {result['error']}")
-                    frame_detail['prediction'] = None
-                    frame_detail['error'] = result['error']
-                    processing_error_occurred = True
+                cnn_prediction = None
+                if cnn_result['error']:
+                    print(f"  Error predicting frame {frame_index} (CNN): {cnn_result['error']}")
+                    cnn_frame_predictions[frame_index] = None
                 else:
-                    current_prediction = result['prediction']
-                    current_confidence = result.get('confidence_incorrect', None)
-                    frame_predictions.append(current_prediction)
-                    if current_confidence is not None:
-                         frame_confidences.append(current_confidence) # Store confidence for overall calculation
-
-                    frame_detail['prediction'] = current_prediction
-                    frame_detail['confidence_incorrect'] = current_confidence
-                    print(f"Frame {i+1} prediction: {current_prediction} (Confidence Incorrect: {current_confidence:.4f})")
-                frame_analysis_details.append(frame_detail)
-
+                    cnn_prediction = cnn_result['prediction']
+                    cnn_confidence = cnn_result.get('confidence_incorrect', None)
+                    cnn_frame_predictions[frame_index] = cnn_prediction
+                    if cnn_confidence is not None: all_confidences_incorrect.append(cnn_confidence)
+                    print(f"  CNN Prediction: {cnn_prediction} (Confidence Incorrect: {cnn_confidence:.4f})")
+                    if cnn_prediction == "Incorrect":
+                        incorrect_frame_indices.append((frame_index, frame)) # Store index AND frame BGR for saving later
             else:
                  print(f"Warning: Could not read frame at index {frame_index}")
-                 frame_analysis_details.append({'frame_index': frame_index, 'prediction': None, 'error': 'Could not read frame'})
-                 processing_error_occurred = True
+                 cnn_frame_predictions[frame_index] = None
 
-        cap.release()
+        # 4. Determine Overall Prediction based on CNN results
+        if not any(pred is not None for pred in cnn_frame_predictions.values()):
+             processing_error_message = "Could not process any frames from the video."
+             final_overall_prediction = "Error" # Mark as Error if no frames were processed
+             # Fall through to finally block for cleanup, return error later
+        elif "Incorrect" in cnn_frame_predictions.values():
+            final_overall_prediction = "Incorrect"
+        else:
+            final_overall_prediction = "Correct"
 
-        # 4. Aggregate frame predictions AND Calculate Overall Confidence
-        if not frame_predictions and processing_error_occurred:
-            final_prediction = "Error"
-            error_message = "Could not successfully process any frames from the video."
-            return jsonify({'EC': EC_VIDEO_PROCESSING_ERROR, 'EM': error_message, 'DT': None}), 500
-        elif not frame_predictions and not processing_error_occurred:
-            final_prediction = "Undetermined"
-            error_message = "No valid frames could be processed or read."
-            return jsonify({'EC': EC_SUCCESS, 'EM': error_message, 'DT': {'overall_prediction': final_prediction, 'confidence': None}}), 200
-        elif "Incorrect" in frame_predictions:
-            final_prediction = "Incorrect"
-            # Confidence for "Incorrect" is the max confidence_incorrect found
-            if frame_confidences: # Check if list is not empty
-                 overall_confidence = max(frame_confidences)
-        else: # All processed frames are "Correct"
-            final_prediction = "Correct"
-            # Confidence for "Correct" is 1.0 - min(confidence_incorrect)
-            if frame_confidences: # Check if list is not empty
-                 overall_confidence = 1.0 - min(frame_confidences)
+        # Calculate overall confidence
+        if all_confidences_incorrect:
+            if final_overall_prediction == "Incorrect": overall_confidence = float(max(all_confidences_incorrect))
+            elif final_overall_prediction == "Correct": overall_confidence = float(1.0 - min(all_confidences_incorrect))
 
-        # Add a general message if some frames had errors but we still got an overall prediction
-        if processing_error_occurred and final_prediction != "Error":
-            error_message = "Processed successfully, but some frames encountered errors during analysis."
+
+        # 5. Perform Detailed Error Analysis AND Save Error Frames if overall prediction is Incorrect
+        if final_overall_prediction == "Incorrect":
+            print(f"\nAnalyzing {len(incorrect_frame_indices)} incorrect frames for specific errors...")
+            for frame_index, frame_bgr in incorrect_frame_indices: # Iterate through stored incorrect frames
+                 frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB) # Convert the stored frame
+                 print(f"  Analyzing frame {frame_index} (Rule-based)...")
+                 specific_errors = analyze_squat_errors(frame_rgb)
+                 print(f"    Detected specific errors: {specific_errors}")
+
+                 if specific_errors: # Only save/report if rule-based analysis finds errors
+                      # Save error frame
+                      error_frame_filename = f"{unique_id}_frame_{frame_index}_error.jpg"
+                      error_frame_path = os.path.join(ERROR_FRAMES_FOLDER, error_frame_filename)
+                      save_success = cv2.imwrite(error_frame_path, frame_bgr) # Save the original BGR frame
+
+                      error_frame_url = None
+                      if save_success:
+                           print(f"    Saved error frame to: {error_frame_path}")
+                           try:
+                               # Generate URL for the saved static file
+                               error_frame_url = url_for('static', filename=f'{ERROR_FRAMES_SUBDIR}/{error_frame_filename}', _external=True)
+                           except RuntimeError:
+                                print("    Warning: Could not generate external URL for error frame (Flask context missing?). Returning relative path.")
+                                # Provide a relative path if url_for fails outside request context (e.g., during testing)
+                                error_frame_url = f"/{STATIC_FOLDER}/{ERROR_FRAMES_SUBDIR}/{error_frame_filename}"
+
+                      else:
+                           print(f"    Error: Failed to save error frame {error_frame_path}")
+
+                      # Add error details to the list
+                      detected_errors_details.append({
+                           'frame_index': int(frame_index),  # Explicitly convert to Python int
+                           'errors': [str(error) for error in specific_errors],  # Convert each error to string
+                           'error_frame_url': error_frame_url
+                      })
+
+        # Release video capture outside the loop
+        if 'cap' in locals() and cap.isOpened(): cap.release()
+
+        # Check if any frame processing errors occurred during CNN prediction phase
+        if not all(pred is not None for pred in cnn_frame_predictions.values()):
+             processing_error_message = "Processed video, but some frames encountered errors during initial prediction."
 
 
     except Exception as e:
@@ -363,31 +423,27 @@ def predict_squat_posture_api():
         import traceback
         traceback.print_exc()
         error_message = f'An unexpected error occurred during video processing: {str(e)}'
-        if 'cap' in locals() and cap.isOpened(): cap.release()
-        if os.path.exists(video_path):
-             try: os.remove(video_path); print(f"Removed temporary video file after error: {video_path}")
-             except Exception as remove_err: print(f"Error removing temporary file {video_path} after error: {remove_err}")
+        # Cleanup logic in finally block handles cap release and file removal
+
         return jsonify({'EC': EC_VIDEO_PROCESSING_ERROR, 'EM': error_message, 'DT': None}), 500
     finally:
-        # 5. Always attempt to remove the temporary video file
+        # Always attempt to remove the temporary video file
          if os.path.exists(video_path):
-            try:
-                os.remove(video_path)
-                print(f"Removed temporary video file: {video_path}")
-            except Exception as remove_err:
-                print(f"Error removing temporary file {video_path}: {remove_err}")
+            try: os.remove(video_path); print(f"Removed temporary video file: {video_path}")
+            except Exception as remove_err: print(f"Error removing temporary file {video_path}: {remove_err}")
 
-
-    # 6. Prepare and return the final JSON response with confidence
+    # 6. Prepare Final Response Data
     response_data = {
-        'overall_prediction': final_prediction,
-        'confidence': round(overall_confidence, 4) if overall_confidence is not None else None, # Add formatted confidence score
-        # 'frame_analysis': frame_analysis_details # per-frame details
+        'overall_prediction': final_overall_prediction,
+        'confidence': round(overall_confidence, 4) if overall_confidence is not None else None,
+        'detected_errors': detected_errors_details # Return detailed errors list (empty if prediction is Correct)
     }
+    if processing_error_message:
+        response_data['processing_message'] = processing_error_message
 
     return jsonify({
         'EC': EC_SUCCESS,
-        'EM': error_message, # Will be empty if no errors/warnings occurred
+        'EM': "",
         'DT': response_data
     }), 200
 
