@@ -85,7 +85,7 @@ def predict_squat_posture(frame_rgb: np.ndarray, model: nn.Module, transform: A.
             outputs = model(processed_frame_tensor)
         probs = torch.sigmoid(outputs)
         probability_incorrect = probs.item()
-        prediction = "Incorrect" if probability_incorrect > 0.65 else "Correct"
+        prediction = "Incorrect" if probability_incorrect > 0.6 else "Correct"
         return {'prediction': prediction, 'confidence_incorrect': probability_incorrect, 'error': None}
     except Exception as e:
         print(f"Error during CNN prediction: {e}")
@@ -118,9 +118,22 @@ def calculate_angle(p1, p2):
 
 # --- 8. Rule-Based Error Evaluation Functions ---
 # --- KIE (Knee Inward Excursion) ---
-def evaluate_kie_error(keypoints: list, kie_threshold_distance_knees=50) -> bool:
-    """Evaluates Knee Inward Excursion (KIE) error based on keypoints."""
-    if not keypoints or len(keypoints) < 29: # Need knees, ankles
+def evaluate_kie_error(keypoints: list, kie_ratio_threshold=0.85) -> bool:
+    """
+    Evaluates KIE error using the ratio of knee distance to ankle distance.
+    More robust to varying scales and potentially different views than absolute distance.
+
+    Args:
+        keypoints (list): List of MediaPipe Pose keypoints.
+        kie_ratio_threshold (float): The threshold for the ratio (knee_distance / ankle_distance).
+                                     If the ratio is BELOW this threshold, KIE is detected.
+                                     (e.g., 0.85 means knees are significantly closer than ankles)
+
+    Returns:
+        bool: True if KIE error is detected, False otherwise.
+    """
+    if not keypoints or len(keypoints) < 29:  # Need knees and ankles
+        print("Warning: Insufficient keypoints for KIE ratio evaluation.")
         return False
     try:
         left_knee = keypoints[25]
@@ -128,26 +141,30 @@ def evaluate_kie_error(keypoints: list, kie_threshold_distance_knees=50) -> bool
         left_ankle = keypoints[27]
         right_ankle = keypoints[28]
 
-        # Condition 1: Knees too close horizontally
+        # Calculate horizontal distance between knees
         knee_distance_x = abs(left_knee[0] - right_knee[0])
-        condition_1 = (knee_distance_x < kie_threshold_distance_knees)
 
-        # Condition 2: Knees inside ankles horizontally
-        left_knee_ankle_diff_x = left_knee[0] - left_ankle[0]
-        right_knee_ankle_diff_x = right_knee[0] - right_ankle[0] # This logic needs adjustment for right side view
-        # Let's simplify: check if knees are closer to center than ankles
-        # A more robust check might compare knee distance to ankle distance
-        center_x = (left_ankle[0] + right_ankle[0]) / 2
-        left_knee_to_center = abs(left_knee[0] - center_x)
-        right_knee_to_center = abs(right_knee[0] - center_x)
-        # If both knees are significantly closer than a threshold? Needs more thought or simpler check.
-        # Using the previous simple check for now, acknowledge limitations
-        condition_2 = (left_knee_ankle_diff_x < 0 and right_knee_ankle_diff_x < 0) # Simple check, might fail on side views
+        # Calculate horizontal distance between ankles
+        ankle_distance_x = abs(left_ankle[0] - right_ankle[0])
 
-        is_kie_error = (condition_1 and condition_2)
+        # Avoid division by zero if ankles are very close or occluded
+        if ankle_distance_x < 10:  # Use a small epsilon threshold instead of zero
+            print("Warning: Ankle distance is very small, cannot reliably calculate KIE ratio.")
+            return False  # Cannot determine KIE if ankle distance is unreliable
+
+        # Calculate the ratio
+        knee_ankle_ratio = knee_distance_x / ankle_distance_x
+        print(f"  KIE Check: KneeDist={knee_distance_x:.1f}, AnkleDist={ankle_distance_x:.1f}, Ratio={knee_ankle_ratio:.2f}")  # Debug print
+
+        # Check if the ratio is below the threshold
+        is_kie_error = (knee_ankle_ratio < kie_ratio_threshold)
+
         return is_kie_error
     except IndexError:
-        print("Warning: Required keypoints for KIE evaluation not found.")
+        print("Warning: Required keypoints (knees/ankles) for KIE evaluation not found.")
+        return False
+    except Exception as e:
+        print(f"Error during KIE evaluation: {e}")
         return False
 
 # --- KFE (Knee Forward Excursion) ---
@@ -178,9 +195,24 @@ def evaluate_kfe_error(keypoints: list, kfe_threshold_distance_knee_nose=50) -> 
 
 
 # --- SS (Shallow Squat) ---
-def evaluate_ss_error(keypoints: list, ss_threshold_hip_knee_y=20, ss_threshold_thigh_angle=45) -> bool:
-    """Evaluates Shallow Squat (SS) error based on keypoints."""
+def evaluate_ss_error(keypoints: list, ss_threshold_hip_knee_y=20, ss_threshold_angle_from_vertical=30) -> bool:
+    """
+    Evaluates Shallow Squat (SS) error based on keypoints.
+    Combines vertical hip position and thigh angle relative to vertical.
+
+    Args:
+        keypoints (list): List of MediaPipe Pose keypoints.
+        ss_threshold_hip_knee_y (int): Vertical distance threshold (pixels). If hip is less than
+                                       this amount below the knee, it might be shallow.
+        ss_threshold_angle_from_vertical (int): Angle threshold (degrees). If the absolute thigh angle
+                                                is within this threshold from vertical (90 deg),
+                                                it's considered too steep (shallow).
+
+    Returns:
+        bool: True if Shallow Squat error is detected, False otherwise.
+    """
     if not keypoints or len(keypoints) < 27: # Need hips, knees
+        print("Warning: Insufficient keypoints for SS evaluation.")
         return False
     try:
         left_hip = keypoints[23]
@@ -188,30 +220,36 @@ def evaluate_ss_error(keypoints: list, ss_threshold_hip_knee_y=20, ss_threshold_
         left_knee = keypoints[25]
         right_knee = keypoints[26]
 
-        # Condition 1: Hips not sufficiently below knees vertically (y increases downwards)
+        # --- Condition 1: Hips not sufficiently below knees vertically (y increases downwards) ---
         left_hip_knee_diff_y = left_hip[1] - left_knee[1]
         right_hip_knee_diff_y = right_hip[1] - right_knee[1]
-        # If diff_y is small or negative, hip is higher than or level with knee
+        # If diff_y is less than threshold, hip is NOT low enough
         condition_1 = (left_hip_knee_diff_y < ss_threshold_hip_knee_y or right_hip_knee_diff_y < ss_threshold_hip_knee_y)
+        # print(f"  SS Check Cond1: L_diffY={left_hip_knee_diff_y:.1f}, R_diffY={right_hip_knee_diff_y:.1f}, Threshold={ss_threshold_hip_knee_y}") # Debug
 
-        # Condition 2: Thigh angle relative to horizontal is too small (thighs not close to parallel)
+        # --- Condition 2: Thigh angle is too close to vertical (too steep) ---
         left_thigh_angle = calculate_angle(left_hip, left_knee)
         right_thigh_angle = calculate_angle(right_hip, right_knee)
-        # Assuming 0 degrees is horizontal right, 90 is down, -90 is up.
-        # We want the angle to be close to 0 (or maybe slightly positive if hip is lower).
-        # If abs(angle) is large (e.g., > 45), the thigh is steep -> shallow squat.
-        # Let's redefine: we want the angle to be *small* relative to vertical (90 degrees)
-        # Or *large* relative to horizontal (0 degrees) in the downward direction.
-        # A simpler check: if angle is between roughly -45 and 45 degrees -> shallow
-        condition_2_v1 = (abs(left_thigh_angle) < ss_threshold_thigh_angle or abs(right_thigh_angle) < ss_threshold_thigh_angle) # Checks if angle is close to horizontal
-        # Let's try another angle logic: Calculate angle relative to vertical
-        # Angle from hip down vertically: Would require an extra point or assuming verticality
-        # Stick with horizontal angle check for simplicity, acknowledge limitations.
 
-        is_ss_error = (condition_1 or condition_2_v1)
+        # Check how close the absolute angle is to 90 degrees (vertical)
+        condition_2_left = abs(abs(left_thigh_angle) - 90) < ss_threshold_angle_from_vertical
+        condition_2_right = abs(abs(right_thigh_angle) - 90) < ss_threshold_angle_from_vertical
+        condition_2 = (condition_2_left or condition_2_right)
+        # print(f"  SS Check Cond2: L_Angle={left_thigh_angle:.1f}, R_Angle={right_thigh_angle:.1f}, Threshold_Vert={ss_threshold_angle_from_vertical}") # Debug
+
+        # --- Final Decision ---
+        is_ss_error = (condition_1 or condition_2)
+        # print(f"  SS Check Result: Cond1={condition_1}, Cond2={condition_2}, Final={is_ss_error}") # Debug
+
+        # --- Acknowledge Limitations ---
+        # print("  Note: SS evaluation from rear view has limitations regarding precise hip crease and thigh parallelism.")
+
         return is_ss_error
     except IndexError:
-        print("Warning: Required keypoints for SS evaluation not found.")
+        print("Warning: Required keypoints (hips/knees) for SS evaluation not found.")
+        return False
+    except Exception as e:
+        print(f"Error during SS evaluation: {e}")
         return False
 
 
