@@ -275,8 +275,8 @@ def analyze_squat_errors(frame_rgb: np.ndarray) -> list:
     # Call individual rule-based error evaluation functions
     if evaluate_kie_error(keypoints):
         detected_errors.append("Knee Inward Excursion (KIE)")
-    if evaluate_kfe_error(keypoints):
-        detected_errors.append("Knee Forward Excursion (KFE)")
+    # if evaluate_kfe_error(keypoints):
+    #     detected_errors.append("Knee Forward Excursion (KFE)")
     if evaluate_ss_error(keypoints):
         detected_errors.append("Shallow Squat")
 
